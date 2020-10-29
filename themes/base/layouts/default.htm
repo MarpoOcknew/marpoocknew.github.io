@@ -1,0 +1,73 @@
+description = "Builder"
+[contactForm]
+[staticPage]
+useContent = 0
+default = 1
+==
+{% spaceless %}
+{variable name="blocks" label="Blocks" tab="Content" type="repeater" span="full" prompt="Add content block" groups="themes/via-base/config/repeater_fields.yaml"}{/variable}
+
+{variable name="section" label="SEO Details" tab="SEO" type="section" span="full"}{/variable}
+{variable name="metatitle" label="Meta Title" tab="SEO" type="text" span="full"}{/variable}
+{variable name="metadesc" label="Meta Description" tab="SEO" type="textarea" size="tiny" span="full"}{/variable}
+{variable name="metakeywords" label="Meta Keywords" tab="SEO" type="textarea" size="tiny" span="full"}{/variable}
+
+{variable name="section1Social" label="Facebook" tab="Social Meta" type="section" span="left"}{/variable}
+{variable name="section2Social" label="Twitter" tab="Social Meta" type="section" span="right"}{/variable}
+{variable name="fbtitle" label="Title" tab="Social Meta" type="text" span="left"}{/variable}
+{variable name="twtitle" label="Title" tab="Social Meta" type="text" span="right"}{/variable}
+{variable name="fbdesc" label="Description" tab="Social Meta" type="textarea" size="tiny" span="left"}{/variable}
+{variable name="twdesc" label="Description" tab="Social Meta" type="textarea" size="tiny" span="right"}{/variable}
+{variable name="fbimage" label="Image" tab="Social Meta" type="mediafinder" mode="image" span="left"}{/variable}
+{variable name="twimage" label="Image" tab="Social Meta" type="mediafinder" mode="image" span="right"}{/variable}
+{% endspaceless %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>{{ this.page.title }} - {{ this.theme.site_title }}</title>
+        <meta name="title" content="{{ metatitle }}">
+        <meta name="description" content="{{ metadesc }}">
+        <meta name="keywords" content="{{ metakeywords }}">
+
+        {% partial 'global/meta' %}
+        <meta property="og:title" content="{{ fbtitle }}">
+        <meta property="og:description" content="{{ fbdesc }}">
+        <meta property="og:image" content="{{url('/')}}{{ fbimage | media }}">
+        <meta property="og:site_name" content="{{ this.theme.site_title }}">
+        <meta name="twitter:title" content="{{ twtitle }}">
+        <meta name="twitter:description" content="{{ twdesc }}">
+        <meta name="twitter:image" content="{{url('/')}}{{ twimage | media }}">
+        <meta name="twitter:image:alt" content="{{ twtitle }} image">
+        <meta name="twitter:card" content="summary_large_image">
+    </head>
+
+    <body>
+        {% partial 'global/header' %}
+
+        {% for section in blocks %}
+            <!-- Copy Block Code Here -->
+        {% endfor %}
+
+        {% page %}
+
+        <section class="viatic-block">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6 text-center">
+                        <h1>Call to Action</h1>
+                        <p class="lead">
+                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts
+                        </p>
+                        <p class="mt-5 mt-sm-4">
+                            <a class="btn btn-primary" href="https://www.froala.com">Download</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% partial 'global/footer' %}
+
+        {% partial 'global/scripts' %}
+    </body>
+</html>

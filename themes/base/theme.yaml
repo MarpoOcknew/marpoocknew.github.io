@@ -1,0 +1,116 @@
+name: 'VIA Base Theme'
+description: 'A base theme with Sass support for ViaticCMS.'
+author: 'Martin Pollock'
+homepage: 'http://viacreative.co.uk'
+code: via-base-theme
+form:
+    tabs:
+      fields:
+        # Website Details
+        appearance_settings_section:
+          tab: General
+          label: Website Details
+          span: left
+          type: section
+        appearance_header_section:
+          tab: General
+          label: Section Settings
+          span: right
+          type: section
+
+        site_title:
+          tab: General
+          span: left
+          label: Site Title
+          type: text
+        contact_image:
+          tab: General
+          span: right
+          label: Contact Background Image
+          type: mediafinder
+          mode: image
+
+        logo_image:
+          tab: General
+          span: left
+          label: Logo
+          type: mediafinder
+          mode: image
+
+        logo_alt_image:
+          tab: General
+          span: left
+          label: Logo (Alt)
+          type: mediafinder
+          mode: image
+
+
+
+        # Contact details
+        contact_details_section:
+          tab: Contact details
+          label: Contact information
+          span: left
+          type: section
+        contact_address_section:
+          tab: Contact details
+          label: Address
+          span: right
+          type: section
+
+        contact_phone:
+          tab: Contact details
+          span: left
+          label: Contact Phone
+          type: text
+        contact_address:
+          tab: Contact details
+          span: right
+          label: ' '
+          type: richeditor
+          toolbarButtons: bold|italic
+
+        contact_email:
+          tab: Contact details
+          span: left
+          label: Contact Email
+          type: text
+        contact_address_lat:
+          tab: Contact details
+          span: left
+          label: Latitude
+          type: text
+        contact_address_lng:
+          tab: Contact details
+          span: left
+          label: Longitude
+          type: text
+
+
+
+        # Social links
+        social_facebook:
+          tab: Social
+          span: left
+          label: Facebook link
+          type: text
+        # social_twitter:
+        #   tab: Social
+        #   span: left
+        #   label: Twitter link
+        #   type: text
+        # social_instagram:
+        #   tab: Social
+        #   span: left
+        #   label: Instagram link
+        #   type: text
+        # social_linkedin:
+        #   tab: Social
+        #   span: left
+        #   label: Linkedin link
+        #   type: text
+        # social_pinterest:
+        #   tab: Social
+        #   span: left
+        #   label: Pinterest link
+        #   type: text

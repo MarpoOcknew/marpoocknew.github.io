@@ -1,0 +1,15 @@
+// Global
+@import "global/fonts";
+@import "global/breakpoints";
+@import "global/colors";
+@import "global/mixins";
+@import "global/general";
+@import "global/misc";
+@import "global/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Components
+@import "components/section";
+
+// Blocks
+@import "blocks/dummy-block";

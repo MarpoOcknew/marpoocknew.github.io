@@ -1,0 +1,564 @@
+// Transition
+@mixin transition {
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
+    transition: 0.5s ease all;
+}
+
+
+// Text Colours
+@mixin colors {
+    &.primary {
+        color: $color-primary !important;
+
+        &-light {
+            color: $color-primary-light !important;
+        }
+
+        &-lighter {
+            color: $color-primary-lighter !important;
+        }
+
+        &-dark {
+            color: $color-primary-dark !important;
+        }
+
+        &-darker {
+            color: $color-primary-darker !important;
+        }
+    }
+
+    &.secondary {
+        color: $color-secondary !important;
+
+        &-light {
+            color: $color-secondary-light !important;
+        }
+
+        &-lighter {
+            color: $color-secondary-lighter !important;
+        }
+
+        &-dark {
+            color: $color-secondary-dark !important;
+        }
+
+        &-darker {
+            color: $color-secondary-darker !important;
+        }
+    }
+
+    &.tertiary {
+        color: $color-tertiary !important;
+
+        &-light {
+            color: $color-tertiary-light !important;
+        }
+
+        &-lighter {
+            color: $color-tertiary-lighter !important;
+        }
+
+        &-dark {
+            color: $color-tertiary-dark !important;
+        }
+
+        &-darker {
+            color: $color-tertiary-darker !important;
+        }
+    }
+
+    &.quartiary {
+        color: $color-quartiary !important;
+
+        &-light {
+            color: $color-quartiary-light !important;
+        }
+
+        &-lighter {
+            color: $color-quartiary-lighter !important;
+        }
+
+        &-dark {
+            color: $color-quartiary-dark !important;
+        }
+
+        &-darker {
+            color: $color-quartiary-darker !important;
+        }
+    }
+
+    &.gray {
+        color: $color-gray !important;
+
+        &-light {
+            color: $color-gray-light !important;
+        }
+
+        &-lighter {
+            color: $color-gray-lighter !important;
+        }
+
+        &-dark {
+            color: $color-gray-dark !important;
+        }
+
+        &-darker {
+            color: $color-gray-darker !important;
+        }
+    }
+
+    &.white {
+        color: white !important;
+    }
+
+    &.black {
+        color: black !important;
+    }
+}
+
+
+// Background Colours
+@mixin bkgd-colors {
+    &.primary {
+        background-color: $color-primary !important;
+
+        &-light {
+            background-color: $color-primary-light !important;
+        }
+
+        &-lighter {
+            background-color: $color-primary-lighter !important;
+        }
+
+        &-dark {
+            background-color: $color-primary-dark !important;
+        }
+
+        &-darker {
+            background-color: $color-primary-darker !important;
+        }
+    }
+
+    &.secondary {
+        background-color: $color-secondary !important;
+
+        &-light {
+            background-color: $color-secondary-light !important;
+        }
+
+        &-lighter {
+            background-color: $color-secondary-lighter !important;
+        }
+
+        &-dark {
+            background-color: $color-secondary-dark !important;
+        }
+
+        &-darker {
+            background-color: $color-secondary-darker !important;
+        }
+    }
+
+    &.tertiary {
+        background-color: $color-tertiary !important;
+
+        &-light {
+            background-color: $color-tertiary-light !important;
+        }
+
+        &-lighter {
+            background-color: $color-tertiary-lighter !important;
+        }
+
+        &-dark {
+            background-color: $color-tertiary-dark !important;
+        }
+
+        &-darker {
+            background-color: $color-tertiary-darker !important;
+        }
+    }
+
+    &.quartiary {
+        background-color: $color-quartiary !important;
+
+        &-light {
+            background-color: $color-quartiary-light !important;
+        }
+
+        &-lighter {
+            background-color: $color-quartiary-lighter !important;
+        }
+
+        &-dark {
+            background-color: $color-quartiary-dark !important;
+        }
+
+        &-darker {
+            background-color: $color-quartiary-darker !important;
+        }
+    }
+
+    &.gray {
+        background-color: $color-gray !important;
+
+        &-light {
+            background-color: $color-gray-light !important;
+        }
+
+        &-lighter {
+            background-color: $color-gray-lighter !important;
+        }
+
+        &-dark {
+            background-color: $color-gray-dark !important;
+        }
+
+        &-darker {
+            background-color: $color-gray-darker !important;
+        }
+    }
+
+    &.white {
+        background-color: white !important;
+    }
+
+    &.black {
+        background-color: black !important;
+    }
+}
+
+
+// Background Colours :Before;
+@mixin bkgd-colors-before {
+    &.primary {
+        &:before {
+            background-color: $color-primary;
+        }
+
+        &-light {
+            &:before {
+                background-color: $color-primary-light;
+            }
+        }
+
+        &-lighter {
+            &:before {
+                background-color: $color-primary-lighter;
+            }
+        }
+
+        &-dark {
+            &:before {
+                background-color: $color-primary-dark;
+            }
+        }
+
+        &-darker {
+            &:before {
+                background-color: $color-primary-darker;
+            }
+        }
+    }
+
+    &.secondary {
+        &:before {
+            background-color: $color-secondary;
+        }
+
+        &-light {
+            &:before {
+                background-color: $color-secondary-light;
+            }
+        }
+
+        &-lighter {
+            &:before {
+                background-color: $color-secondary-lighter;
+            }
+        }
+
+        &-dark {
+            &:before {
+                background-color: $color-secondary-dark;
+            }
+        }
+
+        &-darker {
+            &:before {
+                background-color: $color-secondary-darker;
+            }
+        }
+    }
+
+    &.tertiary {
+        &:before {
+            background-color: $color-tertiary;
+        }
+
+        &-light {
+            &:before {
+                background-color: $color-tertiary-light;
+            }
+        }
+
+        &-lighter {
+            &:before {
+                background-color: $color-tertiary-lighter;
+            }
+        }
+
+        &-dark {
+            &:before {
+                background-color: $color-tertiary-dark;
+            }
+        }
+
+        &-darker {
+            &:before {
+                background-color: $color-tertiary-darker;
+            }
+        }
+    }
+
+    &.quartiary {
+        &:before {
+            background-color: $color-quartiary;
+        }
+
+        &-light {
+            &:before {
+                background-color: $color-quartiary-light;
+            }
+        }
+
+        &-lighter {
+            &:before {
+                background-color: $color-quartiary-lighter;
+            }
+        }
+
+        &-dark {
+            &:before {
+                background-color: $color-quartiary-dark;
+            }
+        }
+
+        &-darker {
+            &:before {
+                background-color: $color-quartiary-darker;
+            }
+        }
+    }
+
+    &.gray {
+        &:before {
+            background-color: $color-gray;
+        }
+
+        &-light {
+            &:before {
+                background-color: $color-gray-light;
+            }
+        }
+
+        &-lighter {
+            &:before {
+                background-color: $color-gray-lighter;
+            }
+        }
+
+        &-dark {
+            &:before {
+                background-color: $color-gray-dark;
+            }
+        }
+
+        &-darker {
+            &:before {
+                background-color: $color-gray-darker;
+            }
+        }
+    }
+
+    &.black {
+        &:before {
+            background-color: black;
+        }
+    }
+
+    &.white {
+        &:before {
+            background-color: white;
+        }
+    }
+}
+
+
+// Background Colours :After;
+@mixin bkgd-colors-after {
+    &.primary {
+        &:after {
+            background-color: $color-primary;
+        }
+
+        &-light {
+            &:after {
+                background-color: $color-primary-light;
+            }
+        }
+
+        &-lighter {
+            &:after {
+                background-color: $color-primary-lighter;
+            }
+        }
+
+        &-dark {
+            &:after {
+                background-color: $color-primary-dark;
+            }
+        }
+
+        &-darker {
+            &:after {
+                background-color: $color-primary-darker;
+            }
+        }
+    }
+
+    &.secondary {
+        &:after {
+            background-color: $color-secondary;
+        }
+
+        &-light {
+            &:after {
+                background-color: $color-secondary-light;
+            }
+        }
+
+        &-lighter {
+            &:after {
+                background-color: $color-secondary-lighter;
+            }
+        }
+
+        &-dark {
+            &:after {
+                background-color: $color-secondary-dark;
+            }
+        }
+
+        &-darker {
+            &:after {
+                background-color: $color-secondary-darker;
+            }
+        }
+    }
+
+    &.tertiary {
+        &:after {
+            background-color: $color-tertiary;
+        }
+
+        &-light {
+            &:after {
+                background-color: $color-tertiary-light;
+            }
+        }
+
+        &-lighter {
+            &:after {
+                background-color: $color-tertiary-lighter;
+            }
+        }
+
+        &-dark {
+            &:after {
+                background-color: $color-tertiary-dark;
+            }
+        }
+
+        &-darker {
+            &:after {
+                background-color: $color-tertiary-darker;
+            }
+        }
+    }
+
+    &.quartiary {
+        &:after {
+            background-color: $color-quartiary;
+        }
+
+        &-light {
+            &:after {
+                background-color: $color-quartiary-light;
+            }
+        }
+
+        &-lighter {
+            &:after {
+                background-color: $color-quartiary-lighter;
+            }
+        }
+
+        &-dark {
+            &:after {
+                background-color: $color-quartiary-dark;
+            }
+        }
+
+        &-darker {
+            &:after {
+                background-color: $color-quartiary-darker;
+            }
+        }
+    }
+
+    &.gray {
+        &:after {
+            background-color: $color-gray;
+        }
+
+        &-light {
+            &:after {
+                background-color: $color-gray-light;
+            }
+        }
+
+        &-lighter {
+            &:after {
+                background-color: $color-gray-lighter;
+            }
+        }
+
+        &-dark {
+            &:after {
+                background-color: $color-gray-dark;
+            }
+        }
+
+        &-darker {
+            &:after {
+                background-color: $color-gray-darker;
+            }
+        }
+    }
+
+    &.black {
+        &:after {
+            background-color: black;
+        }
+    }
+
+    &.white {
+        &:after {
+            background-color: white;
+        }
+    }
+}

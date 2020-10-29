@@ -1,0 +1,132 @@
+section {
+	position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.bkgd {
+    &-primary {
+        background-color: $color-primary;
+        color: white;
+
+        &-light {
+            background-color: $color-primary-light;
+            color: white;
+        }
+
+        &-dark {
+            background-color: $color-primary-dark;
+            color: white;
+        }
+    }
+
+    &-secondary {
+        background-color: $color-secondary;
+        color: white;
+
+        &-light {
+            background-color: $color-secondary-light;
+            color: white;
+        }
+
+        &-dark {
+            background-color: $color-secondary-dark;
+            color: white;
+        }
+    }
+
+    &-tertiary {
+        background-color: $color-tertiary;
+        color: white;
+
+        &-light {
+            background-color: $color-tertiary-light;
+            color: white;
+        }
+
+        &-dark {
+            background-color: $color-tertiary-dark;
+            color: white;
+        }
+    }
+
+    &-gray {
+        background-color: $color-gray;
+
+        &-light {
+            background-color: $color-gray-light;
+        }
+
+        &-dark {
+            background-color: $color-gray-dark;
+            color: white;
+        }
+
+        &-darker {
+            background-color: $color-gray-darker;
+            color: white;
+        }
+    }
+
+	&-white {
+		background-color: white;
+	}
+
+	&-image {
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		&-cover {
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		&-wide {
+			background-size: contain;
+			background-position: top center;
+			background-repeat: no-repeat;
+		}
+
+		&-left:after {
+			background-size: cover;
+			background-position: right center;
+			background-repeat: no-repeat;
+			display: block;
+			content: '';
+			height: 100%;
+			width: 52%;
+			position: absolute;
+			z-index: 0;
+			left: 0;
+		}
+
+		&-right:after {
+			background-size: cover;
+			background-position: right center;
+			background-repeat: no-repeat;
+			display: block;
+			content: '';
+			height: 100%;
+			width: 52%;
+			position: absolute;
+			z-index: 0;
+			right: 0;
+		}
+	}
+}
+
+.overlay {
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: 0.1;
+    }
+}

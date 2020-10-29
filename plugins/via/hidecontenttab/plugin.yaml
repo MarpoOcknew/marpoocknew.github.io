@@ -1,0 +1,6 @@
+plugin:
+    name: 'via.hidecontenttab::lang.plugin.name'
+    description: 'via.hidecontenttab::lang.plugin.description'
+    author: VIA
+    icon: oc-icon-history
+    homepage: ''
