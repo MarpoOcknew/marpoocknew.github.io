@@ -23,10 +23,10 @@ form:
           span: left
           label: Site Title
           type: text
-        contact_image:
+        bkgd_image:
           tab: General
           span: right
-          label: Contact Background Image
+          label: Background Image
           type: mediafinder
           mode: image
 
@@ -34,13 +34,6 @@ form:
           tab: General
           span: left
           label: Logo
-          type: mediafinder
-          mode: image
-
-        logo_alt_image:
-          tab: General
-          span: left
-          label: Logo (Alt)
           type: mediafinder
           mode: image
 
@@ -75,16 +68,6 @@ form:
           span: left
           label: Contact Email
           type: text
-        contact_address_lat:
-          tab: Contact details
-          span: left
-          label: Latitude
-          type: text
-        contact_address_lng:
-          tab: Contact details
-          span: left
-          label: Longitude
-          type: text
 
 
 
@@ -94,21 +77,21 @@ form:
           span: left
           label: Facebook link
           type: text
-        # social_twitter:
-        #   tab: Social
-        #   span: left
-        #   label: Twitter link
-        #   type: text
+        social_twitter:
+          tab: Social
+          span: left
+          label: Twitter link
+          type: text
         # social_instagram:
         #   tab: Social
         #   span: left
         #   label: Instagram link
         #   type: text
-        # social_linkedin:
-        #   tab: Social
-        #   span: left
-        #   label: Linkedin link
-        #   type: text
+        social_linkedin:
+          tab: Social
+          span: left
+          label: Linkedin link
+          type: text
         # social_pinterest:
         #   tab: Social
         #   span: left

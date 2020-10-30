@@ -28,8 +28,8 @@ default = 1
         <meta name="title" content="{{ metatitle }}">
         <meta name="description" content="{{ metadesc }}">
         <meta name="keywords" content="{{ metakeywords }}">
-
         {% partial 'global/meta' %}
+
         <meta property="og:title" content="{{ fbtitle }}">
         <meta property="og:description" content="{{ fbdesc }}">
         <meta property="og:image" content="{{url('/')}}{{ fbimage | media }}">
@@ -44,7 +44,15 @@ default = 1
     <body>
         {% partial 'global/header' %}
 
-        {% partial 'global/about' %}
+        {% partial 'sections/about' %}
+
+        {% partial 'sections/resume' %}
+
+        {% partial 'sections/services' %}
+
+        {% partial 'sections/portfolio' %}
+
+        {% partial 'sections/contact' %}
 
         {% page %}
 
