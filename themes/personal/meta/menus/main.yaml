@@ -1,0 +1,51 @@
+name: main
+items:
+    -
+        title: Home
+        type: url
+        url: '#header'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: active
+            isExternal: '0'
+    -
+        title: About
+        type: url
+        url: '#about'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            isExternal: '0'
+    -
+        title: Resume
+        type: url
+        url: '#resume'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            isExternal: '0'
+    -
+        title: Services
+        type: url
+        url: '#services'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            isExternal: '0'
+    -
+        title: Portfolio
+        type: url
+        url: '#portfolio'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            isExternal: '0'
+    -
+        title: Contact
+        type: url
+        url: '#contact'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            isExternal: '0'
