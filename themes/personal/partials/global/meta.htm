@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<title>{{ this.page.title }} - {{ this.theme.site_title }}</title>
+<meta name="description" content="{{ this.page.meta_description }}">
+<meta name="title" content="{{ this.page.meta_title }}">
+<meta name="author" content="Martin Pollock">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="{{ 'dist/images/favicon.png' | theme }}">
+
+<link href="{{ [
+    '@framework.extras',
+    'dist/vendor/icofont/icofont.min.css',
+    'dist/vendor/remixicon/remixicon.css',
+    'dist/vendor/owl.carousel/assets/owl.carousel.min.css',
+    'dist/vendor/boxicons/css/boxicons.min.css',
+    'dist/vendor/venobox/venobox.css',
+    'dist/css/app.css'
+] | theme }}" rel="stylesheet">

@@ -1,0 +1,45 @@
+@mixin breakpoint($size) {
+    @if ($size == 'xs-up') {
+        @media only screen and (min-width:0) { @content; }
+    }
+
+    @if ($size == 'xs-down') {
+        @media only screen and (max-width:575px) { @content; }
+    }
+
+    @if ($size == 'sm-up') {
+        @media only screen and (min-width:576px) { @content; }
+    }
+
+    @if ($size == 'sm-down') {
+        @media only screen and (max-width:767px) { @content; }
+    }
+
+    @if ($size == 'md-up') {
+        @media only screen and (min-width:768px) { @content; }
+    }
+
+    @if ($size == 'md-down') {
+        @media only screen and (max-width:991px) { @content; }
+    }
+
+    @if ($size == 'lg-up') {
+        @media only screen and (min-width:992px) { @content; }
+    }
+
+    @if ($size == 'lg-down') {
+        @media only screen and (max-width:1199px) { @content; }
+    }
+
+    @if ($size == 'xl-up') {
+        @media only screen and (min-width:1200px) { @content; }
+    }
+
+    @if ($size == 'xl-down') {
+        @media only screen and (max-width:none) { @content; }
+    }
+}
+
+@mixin ie11() {
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { @content; }
+}

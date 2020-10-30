@@ -1,0 +1,50 @@
+// 1rem = 10px    Use rem for most instead of px
+
+html {
+    font-size: 16px;
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+
+    &.overflow {
+        overflow: hidden;
+    }
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+
+    &.overflow {
+        overflow: hidden;
+    }
+
+    @include breakpoint('md-down') {
+        font-size: 1.6rem;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    color: $color-primary;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+    margin-bottom: 3rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+    line-height: 3.2rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+    margin-bottom: 3.2rem;
+}
+
+h4 {
+    font-family: 'Open Sans', serif;
+    font-size: 1.6rem;
+}

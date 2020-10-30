@@ -1,0 +1,65 @@
+// More found at https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+
+$blue:    #124578;
+$yellow:  #FEC503;
+$secondary: $yellow;
+
+$theme-colors: (
+    "primary":           $color-primary,
+    "primary-dark":      $color-primary-dark,
+    "primary-darker":    $color-primary-darker,
+    "primary-light":     $color-primary-light,
+    "primary-lighter":   $color-primary-lighter,
+    "secondary":         $color-secondary,
+    "secondary-dark":    $color-secondary-dark,
+    "secondary-darker":  $color-secondary-darker,
+    "secondary-light":   $color-secondary-light,
+    "secondary-lighter": $color-secondary-lighter,
+    "tertiary":          $color-tertiary,
+    "tertiary-dark":     $color-tertiary-dark,
+    "tertiary-darker":   $color-tertiary-darker,
+    "tertiary-light":    $color-tertiary-light,
+    "tertiary-lighter":  $color-tertiary-lighter,
+    "quartiary":         $color-quartiary,
+    "quartiary-dark":    $color-quartiary-dark,
+    "quartiary-darker":  $color-quartiary-darker,
+    "quartiary-light":   $color-quartiary-light,
+    "quartiary-lighter": $color-quartiary-lighter,
+);
+
+$spacer: 1rem;
+$spacers: (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3),
+    6: ($spacer * 5),
+    7: ($spacer * 10)
+);
+
+$font-size-base: 1.6rem;
+$link-hover-decoration: none;
+$border-radius: 1rem;
+$border-radius-lg: 1rem;
+$border-radius-sm: 1rem;
+$input-btn-padding-x: 1.75rem;
+$input-btn-padding-y: 1rem;
+$input-btn-padding-x-sm: 1.5rem;
+$input-btn-padding-y-sm: 0.75rem;
+$input-btn-padding-x-lg: 2rem;
+$input-btn-padding-y-lg: 1.25rem;
+
+// $h1-font-size: 2.75rem;
+// $h2-font-size: 2rem;
+// $h3-font-size: 1.125rem;
+// $h4-font-size: 1rem;
+// $h5-font-size: 0.875rem;
+// $h6-font-size: 0.813rem;
+// $headings-margin-bottom: 0.5rem;
+// $headings-margin-top: 0.3rem;
+// $headings-font-weight: 600;
+
+// $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
