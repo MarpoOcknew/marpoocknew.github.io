@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'activeTheme' => env('ACTIVE_THEME', 'via-base'),
+    'activeTheme' => env('ACTIVE_THEME', 'base'),
 
     /*
     |--------------------------------------------------------------------------
