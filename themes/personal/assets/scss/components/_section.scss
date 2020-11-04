@@ -7,18 +7,18 @@ section {
     opacity: 0;
     transition: ease-in-out 0.4s;
     z-index: 2;
-}
 
-section.section-show {
-    top: 100px;
-    bottom: auto;
-    opacity: 1;
-    padding-bottom: 45px;
-}
+    &.section-show {
+        top: 100px;
+        bottom: auto;
+        opacity: 1;
+        padding-bottom: 45px;
+    }
 
-section .container {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 30px;
+    .container {
+        background: rgba(0, 0, 0, 0.9);
+        padding: 30px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -31,33 +31,47 @@ section .container {
     }
 }
 
-.section-title h2 {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 0;
-    line-height: 1px;
-    margin: 0 0 20px 0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #aaaaaa;
-    font-family: "Poppins", sans-serif;
-}
+.section-title {
+    &.after-secondary {
+        h2::after {
+            background: $color-secondary-lighter;
+        }
+    }
 
-.section-title h2::after {
-    content: "";
-    width: 120px;
-    height: 1px;
-    display: inline-block;
-    background: $color-primary-lighter;
-    margin: 4px 10px;
-}
+    &.after-tertiary {
+        h2::after {
+            background: $color-tertiary-lighter;
+        }
+    }
 
-.section-title p {
-    margin: 0;
-    margin: -15px 0 15px 0;
-    font-size: 36px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
-    color: white;
+    h2 {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0;
+        line-height: 1px;
+        margin: 0 0 20px 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaaaaa;
+        font-family: "Poppins", sans-serif;
+
+        &::after {
+            content: "";
+            width: 120px;
+            height: 1px;
+            display: inline-block;
+            background: $color-primary-lighter;
+            margin: 4px 10px;
+        }
+    }
+
+    p {
+        margin: 0;
+        margin: -15px 0 15px 0;
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: "Poppins", sans-serif;
+        color: white;
+    }
 }

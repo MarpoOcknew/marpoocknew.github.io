@@ -71,6 +71,37 @@ default = 1
     {variable name="icon" label="Remix Icon" type="text" span="storm" cssClass="col-xs-4"}{/variable}
 {/repeater}
 
+{variable name="section11" label="Testimonials" tab="Testimonials" type="section" span="full"}{/variable}
+{repeater name="testimonials" prompt="Add testimonial" tab="Testimonials" span="full"}
+    {variable name="name" label="Client Name" type="text" span="left"}{/variable}
+    {variable name="content" label="Content" type="textarea" size="large" span="right"}{/variable}
+    {variable name="title" label="Job Title" type="text" span="left"}{/variable}
+    {variable name="image" label="Image" type="mediafinder" mode="image" span="left"}{/variable}
+{/repeater}
+
+{variable name="section12" label="Resume" tab="Resume" type="section" span="full"}{/variable}
+{variable name="resumetitle" label="Title" tab="Resume" type="text" span="left"}{/variable}
+{variable name="resumesubtitle" label="Subtitle" tab="Resume" type="text" span="right"}{/variable}
+
+{variable name="section13" label="Summary" tab="Resume" type="section" span="full"}{/variable}
+{variable name="resumename" label="Name" tab="Resume" type="text" span="full"}{/variable}
+{variable name="resumesummary" label="Summary" tab="Resume" type="textarea" size="large" span="full"}{/variable}
+
+{variable name="section14" label="Education" tab="Education" type="section" span="full"}{/variable}
+{repeater name="education" prompt="Add education" tab="Education" span="full"}
+    {variable name="course" label="Course" type="text" span="left"}{/variable}
+    {variable name="content" label="Description" type="richeditor" size="large" span="right"}{/variable}
+    {variable name="location" label="Location" type="text" span="left"}{/variable}
+    {variable name="year" label="Year" type="text" span="left"}{/variable}
+{/repeater}
+
+{variable name="section15" label="Experience" tab="Experience" type="section" span="full"}{/variable}
+{repeater name="experience" prompt="Add experience" tab="Experience" span="full"}
+    {variable name="job" label="Job" type="text" span="left"}{/variable}
+    {variable name="content" label="Description" type="richeditor" size="large" span="right"}{/variable}
+    {variable name="company" label="Company" type="text" span="left"}{/variable}
+    {variable name="year" label="Year" type="text" span="left"}{/variable}
+{/repeater}
 {% endspaceless %}
 <!doctype html>
 <html lang="en">
