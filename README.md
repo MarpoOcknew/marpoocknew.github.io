@@ -1,168 +1,84 @@
-![Viatic CMS](viatic-cms-logo.png)
+<p align="center">
+    <img src="https://github.com/wintercms/winter/raw/develop/modules/backend/assets/images/wordmark.png?raw=true" alt="Winter CMS Logo" width="100%" />
+</p>
 
-# Viatic CMS
+[Winter](https://wintercms.com) is a Content Management System (CMS) and web platform whose sole purpose is to make your development workflow simple again. It was born out of frustration with existing systems. We feel building websites has become a convoluted and confusing process that leaves developers unsatisfied. We want to turn you around to the simpler side and get back to basics.
 
-A customised version of [OctoberCMS](https://octobercms.com) for creating sites for VIA Creative. Includes the base template setup and ready for development.
+Winter's mission is to show the world that web development is not rocket science.
 
+![Stable Build](https://github.com/wintercms/winter/workflows/Tests/badge.svg?branch=develop)
+[![License](https://poser.pugx.org/wintercms/winter/license.svg)](https://packagist.org/packages/wintercms/winter)
 
-## Getting Started
+## Installing Winter
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Instructions on how to install Winter can be found at the [installation guide](https://wintercms.com/docs/setup/installation).
 
-### Prerequisites
+### Quick Start Installation
 
-What things you need to install the software and how to install them
+For advanced users, run this in your terminal to install Winter from command line:
 
-- [Homebrew](https://brew.sh)
-- PHP 7.0+ - `brew install php`
-- [Composer](https://getcomposer.org/)
-- [Yarn](https://yarnpkg.com/lang/en/docs/install/)/[NPM](https://nodejs.org/en/download/) (Both recommended)
-- [Laravel Valet](https://laravel.com/docs/5.8/valet#installation) or another local dev environment with mysql databases
-
-### Installing
-
-Follow these steps to install and setup Viatic for a new project.
-
-
-#### 1. Install ViaticCMS
-
-Clone or copy this project into the location of your other sites and rename it to the new site and delete the current .git folder.
-
-Create a local database for this site and edit the .env file with the correct database name.
-
-Open Terminal and `cd` into the new website folder
-
-```
-cd ~/Sites/new-site
+```shell
+composer create-project wintercms/winter example.com "dev-develop"
 ```
 
-Once in the site filder, run the following command to install all dependancies
-```
-composer install
-```
+If you plan on using a database, run this command inside the application directory.
 
-
-#### 2. Setup Theme
-
-Enter the theme folder with this command
-```
-cd themes/via-base
+```shell
+php artisan winter:install
 ```
 
-Install any dependancies
-```
-yarn
-```
+## Learning Winter
 
+The best place to learn Winter is by [reading the documentation](https://wintercms.com/docs), [watching some screencasts](https://wintercms.com/support/topic/screencast) or [following some tutorials](https://wintercms.com/support/articles/tutorials).
 
-#### 3. Setup Database
+You may also watch these introductory videos for [beginners](https://vimeo.com/79963873) and [advanced users](https://vimeo.com/172202661).
 
-Go back to the site root folder and install the database with this command:
+## Development Team
 
-```
-php artisan october:up
-```
+Winter was forked from October CMS in March 2021 due to a difference in open source management philosophies between the core maintainer team and the two founders of October.
 
-This will install the tables for the CMS and all plugins that have been left for installation.
+The development of Winter is lead by [Luke Towers](https://luketowers.ca/), along with many wonderful people that dedicate their time to help support and grow the community.
 
-It will also create a user that can be used to login with the username & password as `admin`.
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/luketowers"><img src="https://avatars.githubusercontent.com/u/7253840?v=3" width="100px;" alt="Luke Towers"/><br /><sub><b>Luke Towers</b></sub></a></td>
+    <td align="center"><a href="https://github.com/bennothommo"><img src="https://avatars.githubusercontent.com/u/15900351?v=3" width="100px;" alt="Ben Thomson"/><br /><sub><b>Ben Thomson</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mjauvin"><img src="https://avatars.githubusercontent.com/u/2013630?v=3" width="100px;" alt="Marc Jauvin"/><br /><sub><b>Marc Jauvin</b></sub></a></td>
+    <td align="center"><a href="https://github.com/jaxwilko"><img src="https://avatars.githubusercontent.com/u/31214002?v=4" width="100px;" alt="Jack Wilkinson"/><br /><sub><b>Jack Wilkinson</b></sub></a></td>
+  </tr>
+</table>
 
+## Foundation library
 
-#### 4. Install Viatic Settings
+The CMS is built on top of the wildly-popular [Laravel](https://laravel.com) PHP framework, with the in-house [Storm](https://github.com/wintercms/storm) Library as a buffer between the Laravel Framework and the CMS project to minimize breaking changes and improve stability.
 
-First move the `ViaticSetup.php` in the root folder to `Modules\Backend\Database\Seeds`.
+## Contact
 
-Install and setup all Viatic settings by running the db seeder with this command
-```
-php artisan db:seed --class="\Backend\Database\Seeds\ViaticSetup"
-```
+You can communicate with us using the following mediums:
 
+* [Follow us on Twitter](https://twitter.com/usewintercms) for announcements and updates.
+* [Join us on Discord](https://discord.gg/D5MFSPH6Ux) to chat with us.
 
-#### 5. Setup Dashboard
+## Contributing
 
-On the admin dashboard, add any Widget and sae the layout as the default using the 'Manage Widgets' button.
+Before sending or reviewing Pull Requests, be sure to review the [Contributing Guidelines](https://github.com/wintercms/.github/blob/master/CONTRIBUTING.md) first.
 
-Open the database in Sequel Pro or PHPmyAdmin and select the `system_parameters` table.
+### Coding standards
 
-You should see `default.dashboard`, update its value with this JSON
+Please follow the following guides and code standards:
 
-```json
-{"welcome":{"class":"Backend\\ReportWidgets\\Welcome","sortOrder":50,"configuration":{"title":"Welcome","ocWidgetWidth":"6","ocWidgetNewRow":null}},"activeTheme":{"class":"Cms\\ReportWidgets\\ActiveTheme","sortOrder":70,"configuration":{"title":"Website","ocWidgetWidth":"3","ocWidgetNewRow":null}},"report_container_dashboard_3":{"class":"JanVince\\SmallContactForm\\ReportWidgets\\NewMessage","configuration":{"ocWidgetWidth":"3","ocWidgetNewRow":null},"sortOrder":71},"report_container_dashboard_4":{"class":"JanVince\\SmallContactForm\\ReportWidgets\\Messages","configuration":{"ocWidgetWidth":"3"},"sortOrder":72},"report_container_dashboard_6":{"class":"RainLab\\GoogleAnalytics\\ReportWidgets\\TrafficSources","configuration":{"title":"Traffic Sources","reportSize":"150","legendAsTable":1,"days":"30","number":"10","displayDescription":0,"ocWidgetWidth":"3","ocWidgetNewRow":null,"center":null},"sortOrder":74},"report_container_dashboard_7":{"class":"RainLab\\GoogleAnalytics\\ReportWidgets\\Browsers","configuration":{"title":"Browsers","reportHeight":"200","legendAsTable":1,"days":"7","displayDescription":0,"ocWidgetWidth":"3","ocWidgetNewRow":null},"sortOrder":75},"report_container_dashboard_8":{"class":"RainLab\\GoogleAnalytics\\ReportWidgets\\TrafficOverview","configuration":{"title":"Traffic overview","days":"30","ocWidgetWidth":"6"},"sortOrder":76}}
-```
+* [PSR 4 Coding Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md)
+* [PSR 2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+* [PSR 1 Coding Standards](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
 
-This will setup the dashboard with all of the analytics data. You will need to reset the dashboard layout before you see the new default. Analytics will need setup in the Settings tab before they will show properly.
+### Code of Conduct
 
+In order to ensure that the Winter CMS community is welcoming to all, please review and abide by the [Code of Conduct](https://github.com/wintercms/.github/blob/master/CODE_OF_CONDUCT.md).
 
-#### 6. Create gitignore
+## License
 
-In the root folder, duplicate and rename the `.gitignore copy` file to `.gitignore`.
+The Winter CMS platform is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-In the via-base theme folder, duplicate and rename the `.gitignore copy` file to `.gitignore`.
+## Security Vulnerabilities
 
-
-## Editing the theme
-
-The base theme uses Bootstrap 4 and some custom helper classes and is compiled with gulp.
-
-To make changes `cd` into the theme folder
-
-```
-cd /themes/via-base
-```
-
-And watch for changes with
-```
-gulp watch
-```
-
-
-## Deployment
-
-Forge should be used for deploying all updates.
-
-Can be manually deployed by connecting to the server using SSH. Make sure you have ran `gulp` to update theme files and have pushed the updates, then just connect to the server, `cd` into the website's folder and run `git pull` assuming there are no conflicts.
-
-
-## Authors
-
-* **Martin Pollock** - *Initial Viatic and Theme creation* - [MarpoOcknew](https://github.com/MarpoOcknew)
-
-
-## Version History
-
-### Initial Page Builder Release 2.0
-
-```
-- Added theme support for [Viatic Blocks](https://github.com/viacreativedev/Viatic-Blocks)
-    - Update default layout to use only blocks
-    - Add default seo and meta tag fields to layout
-    - Updated variables and mixins to allow for 4 colours + gray with 2 shades darker and lighter for each
-```
-
-### Theme Settings Release 1.3
-
-```
-- Added some default settings to the theme.yaml
-    - Add general details
-    - Add contact details
-    - Add social links
-```
-
-### Quick Install Release 1.2
-
-```
-- Moved a lot of the manual setup to a seeder to make installation much quicker
-```
-
-### Github Release 1.1
-
-```
-- Cleaned up and added to github repo
-```
-
-### Initial Release 1.0
-
-```
-- Created the original version of this project
-- Added updated version of the old via october base theme with scss support
-```
+Please review [our security policy](https://github.com/wintercms/winter/security/policy) on how to report security vulnerabilities.

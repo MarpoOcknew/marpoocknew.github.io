@@ -11,14 +11,14 @@ return [
     |
     */
 
-    'activeTheme' => env('ACTIVE_THEME', 'base'),
+    'activeTheme' => env('ACTIVE_THEME', 'demo'),
 
     /*
     |--------------------------------------------------------------------------
     | Bleeding edge updates
     |--------------------------------------------------------------------------
     |
-    | If you are developing with October, it is important to have the latest
+    | If you are developing with Winter, it is important to have the latest
     | code base. Set this value to 'true' to tell the platform to download
     | and use the development copies of core files and plugins.
     |
@@ -36,7 +36,7 @@ return [
     |
     */
 
-    'backendUri' => env('ADMIN_URL', 'backend'),
+    'backendUri' => 'backend',
 
     /*
     |--------------------------------------------------------------------------
@@ -44,19 +44,19 @@ return [
     |--------------------------------------------------------------------------
     |
     | Use this setting to force a secure protocol when accessing any back-end
-    | pages, including the authentication pages. If set to null, this setting
-    | is enabled when debug mode (app.debug) is disabled.
+    | pages, including the authentication pages. This is usually handled by
+    | web server config, but can be handled by the app for added security.
     |
     */
 
-    'backendForceSecure' => null,
+    'backendForceSecure' => false,
 
     /*
     |--------------------------------------------------------------------------
     | Back-end login remember
     |--------------------------------------------------------------------------
     |
-    | Define live duration of backend sessions :
+    | Define live duration of backend sessions:
     |
     | true  - session never expire (cookie expiration in 5 years)
     |
@@ -95,6 +95,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Automatically run migrations on login
+    |--------------------------------------------------------------------------
+    |
+    | If value is true, UpdateManager will be run on logging in to the backend.
+    | It's recommended to set this value to 'null' in production enviroments
+    | because it clears the cache every time a user logs in to the backend.
+    | If set to null, this setting is enabled when debug mode (app.debug) is enabled
+    | and disabled when debug mode is disabled.
+    |
+    */
+
+    'runMigrationsOnLogin' => null,
+
+    /*
+    |--------------------------------------------------------------------------
     | Determines which modules to load
     |--------------------------------------------------------------------------
     |
@@ -116,7 +131,7 @@ return [
     |
     */
 
-    'disableCoreUpdates' => env('DISABLE_CORE_UPDATES', true),
+    'disableCoreUpdates' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -141,7 +156,7 @@ return [
     |
     */
 
-    'enableRoutesCache' => false,
+    'enableRoutesCache' => env('ROUTES_CACHE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +196,7 @@ return [
     |
     */
 
-    'enableAssetCache' => true,
+    'enableAssetCache' => env('ASSET_CACHE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -195,7 +210,7 @@ return [
     |
     */
 
-    'enableAssetMinify' => true,
+    'enableAssetMinify' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -210,6 +225,32 @@ return [
     */
 
     'enableAssetDeepHashing' => null,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database-driven Themes
+    |--------------------------------------------------------------------------
+    |
+    | Stores theme templates in the database instead of the filesystem.
+    |
+    | false - All theme templates are sourced from the filesystem.
+    |
+    | true  - Source theme templates from the database with fallback to the filesytem.
+    |
+    | null  - Setting equal to the inverse of app.debug: debug enabled, this disabled.
+    |
+    | The database layer stores all modified CMS files in the database. Files that are
+    | not modified continue to be loaded from the filesystem. The `theme:sync $themeDir`
+    | console command is available to populate the database from the filesystem with
+    | the `--toFile` flag to sync in the other direction (database to filesystem) and
+    | the `--paths="/path/to/file.md,/path/to/file2.md" flag to sync only specific files.
+    |
+    | Files modified in the database are cached to indicate that they should be loaded
+    | from the database.
+    |
+    */
+
+    'databaseTemplates' => env('DATABASE_TEMPLATES', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -245,6 +286,7 @@ return [
     |
     | media   - generated by the media manager.
     | uploads - generated by attachment model relationships.
+    | resized - generated by System\Classes\ImageResizer or the resize() Twig filter
     |
     | For each resource you can specify:
     |
@@ -252,20 +294,42 @@ return [
     | folder - a folder prefix for storing all generated files inside.
     | path   - the public path relative to the application base URL,
     |          or you can specify a full URL path.
+    |
+    | Optionally, you can specify how long temporary URLs to protected files
+    | in cloud storage (ex. AWS, RackSpace) are valid for by setting
+    | temporaryUrlTTL to a value in seconds to define a validity period. This
+    | is only used for the 'uploads' config when using a supported cloud disk
+    |
+    | NOTE: If you have installed Winter in a subfolder, are using local
+    | storage and are not using a linkPolicy of 'force' you should include
+    | the path to the subfolder in the `path` option for these storage
+    | configurations.
+    |
+    | Example: Winter is installed under https://localhost/projects/winter.
+    | You should then specify `/projects/winter/storage/app/uploads` as the
+    | path for the uploads disk and `/projects/winter/storage/app/media` as
+    | the path for the media disk.
     */
 
     'storage' => [
 
         'uploads' => [
-            'disk'   => 'local',
-            'folder' => 'uploads',
-            'path'   => '/storage/app/uploads',
+            'disk'            => 'local',
+            'folder'          => 'uploads',
+            'path'            => '/storage/app/uploads',
+            'temporaryUrlTTL' => 3600,
         ],
 
         'media' => [
             'disk'   => 'local',
             'folder' => 'media',
             'path'   => '/storage/app/media',
+        ],
+
+        'resized' => [
+            'disk'   => 'local',
+            'folder' => 'resized',
+            'path'   => '/storage/app/resized',
         ],
 
     ],
@@ -275,7 +339,7 @@ return [
     | Convert Line Endings
     |--------------------------------------------------------------------------
     |
-    | Determines if October should convert line endings from the windows style
+    | Determines if Winter should convert line endings from the windows style
     | \r\n to the unix style \n.
     |
     */
@@ -296,7 +360,7 @@ return [
     |
     */
 
-    'linkPolicy' => 'detect',
+    'linkPolicy' => env('LINK_POLICY', 'detect'),
 
     /*
     |--------------------------------------------------------------------------
@@ -327,12 +391,12 @@ return [
     | Cross Site Request Forgery (CSRF) Protection
     |--------------------------------------------------------------------------
     |
-    | If the CSRF protection is enabled, all "postback" requests are checked
-    | for a valid security token.
+    | If the CSRF protection is enabled, all "postback" & AJAX requests are
+    | checked for a valid security token.
     |
     */
 
-    'enableCsrfProtection' => true,
+    'enableCsrfProtection' => env('ENABLE_CSRF', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -361,5 +425,46 @@ return [
     */
 
     'enableTwigStrictVariables' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Base Directory Restriction
+    |--------------------------------------------------------------------------
+    |
+    | Restricts loading backend template and config files to within the base
+    | directory of the application.
+    |
+    | WARNING: This should always be enabled for security reasons. However, in
+    | some cases you may need to disable this; for instance when developing
+    | plugins that are stored elsewhere in the filesystem for organizational
+    | reasons and then symlinked into the application plugins/ directory.
+    |
+    | NEVER have this disabled in production.
+    |
+    */
+
+    'restrictBaseDir' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Backend Service Worker
+    |--------------------------------------------------------------------------
+    |
+    | Allow plugins to run Service Workers in the backend.
+    |
+    | WARNING: This should always be disabled for security reasons as Service
+    | Workers can be hijacked and used to run XSS into the backend. Turning
+    | this feature on can create a conflict if you have a frontend Service
+    | Worker running. The 'scope' needs to be correctly set and not have a
+    | duplicate subfolder structure on the frontend, otherwise it will run
+    | on both the frontend and backend of your website.
+    |
+    | true  - allow service workers to run in the backend
+    |
+    | false - disallow service workers to run in the backend
+    |
+    */
+
+    'enableBackendServiceWorkers' => false,
 
 ];

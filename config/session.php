@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => 'file',
+    'driver' => env('SESSION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,9 +64,9 @@ return [
     | Session Database Connection
     |--------------------------------------------------------------------------
     |
-    | When using the "database" session driver, you may specify the database
-    | connection that should be used to manage your sessions. This should
-    | correspond to a connection in your "database" configuration file.
+    | When using the "database" or "redis" session drivers, you may specify a
+    | connection that should be used to manage these sessions. This should
+    | correspond to a connection in your database configuration options.
     |
     */
 
@@ -109,7 +109,7 @@ return [
     |
     */
 
-    'cookie' => 'viatic_session',
+    'cookie' => 'winter_session',
 
     /*
     |--------------------------------------------------------------------------
@@ -139,6 +139,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | HTTP Access Only
+    |--------------------------------------------------------------------------
+    |
+    | Setting this value to true will prevent JavaScript from accessing the
+    | value of the cookie and the cookie will only be accessible through
+    | the HTTP protocol. You are free to modify this option if needed.
+    |
+    */
+
+    'http_only' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | HTTPS Only Cookies
     |--------------------------------------------------------------------------
     |
@@ -149,5 +162,38 @@ return [
     */
 
     'secure' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Same-Site Cookies
+    |--------------------------------------------------------------------------
+    |
+    | This option determines how your cookies behave when cross-site requests
+    | take place and can be used to mitigate CSRF attacks.
+    |
+    | Cookies that match the domain of the current site, i.e. what's displayed
+    | in the browser's address bar, are referred to as first-party cookies.
+    | Similarly, cookies from domains other than the current site are referred
+    | to as third-party cookies.
+    |
+    | Cookies without a SameSite attribute will be treated as `SameSite=Lax`,
+    | meaning the default behaviour will be to restrict cookies to first party
+    | contexts only.
+    |
+    | Cookies for cross-site usage must specify `same_site` as 'None' and `secure`
+    | as `true` to work correctly.
+    |
+    | Lax - Cookies are allowed to be sent with top-level navigations and will
+    | be sent along with GET request initiated by third party website.
+    | This is the default value in modern browsers.
+    |
+    | Strict - Cookies will only be sent in a first-party context and not be
+    | sent along with requests initiated by third party websites.
+    |
+    | Supported: "Lax", "Strict" and "None"
+    |
+    */
+
+    'same_site' => 'Lax',
 
 ];

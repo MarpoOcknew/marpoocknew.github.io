@@ -80,7 +80,7 @@ return [
     | Convert Line Endings
     |--------------------------------------------------------------------------
     |
-    | Determines if October should convert line endings from the windows style
+    | Determines if Winter should convert line endings from the windows style
     | \r\n to the unix style \n.
     |
     */
@@ -108,5 +108,17 @@ return [
     */
 
     'themesPathLocal' => base_path('tests/fixtures/themes'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cross Site Request Forgery (CSRF) Protection
+    |--------------------------------------------------------------------------
+    |
+    | If the CSRF protection is enabled, all "postback" requests are checked
+    | for a valid security token.
+    |
+    */
+
+    'enableCsrfProtection' => false,
 
 ];

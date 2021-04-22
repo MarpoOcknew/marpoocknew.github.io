@@ -37,7 +37,6 @@ return [
         'enter_new_password' => 'Ingrese una nueva contraseña',
         'password_reset' => 'Restablecer la contraseña',
         'restore_success' => 'Correo electrónico enviado a su dirección con las instruciones.',
-        'restore_error' => "No se ha encontrado el usuario ':login'",
         'reset_success' => 'Contraseña ha sido restablecida. Ahora puede iniciar sesión',
         'reset_error' => 'La información para restablecer la contraseña no es valida. ¡Por favor, vuelva a intentarlo!',
         'reset_fail' => '¡No es posible restablecer la contraseña!',
@@ -307,11 +306,11 @@ return [
         'auto_closing' => 'Cerrado de etiquetas automático',
         'show_invisibles' => 'Mostrar caracteres invisibles',
         'show_gutter' => 'Mostrar numeros de línea',
-        'basic_autocompletion'=> 'Autocompletado Basico (Ctrl + Espacio)',
-        'live_autocompletion'=> 'Autocompletado en Vivo',
-        'enable_snippets'=> 'Activar uso de Snippets',
-        'display_indent_guides'=> 'Mostrar Guias de Identado',
-        'show_print_margin'=> 'Mostrar Margen de impresión',
+        'basic_autocompletion' => 'Autocompletado Basico (Ctrl + Espacio)',
+        'live_autocompletion' => 'Autocompletado en Vivo',
+        'enable_snippets' => 'Activar uso de Snippets',
+        'display_indent_guides' => 'Mostrar Guias de Identado',
+        'show_print_margin' => 'Mostrar Margen de impresión',
         'mode_off' => 'Off',
         'mode_fluid' => 'Fluido',
         '40_characters' => '40 Caracteres',
@@ -396,7 +395,8 @@ return [
     'filter' => [
         'all' => 'todo',
         'options_method_not_exists' => "La clase de modelo :model debe definir un método :method() para regresar opciones para el filtro ':filter'.",
-        'date_all' => 'todo el período'
+        'date_all' => 'todo el período',
+        'number_all' => 'todos los números'
     ],
     'import_export' => [
         'upload_csv_file' => '1. Subir un archivo CSV',
@@ -535,6 +535,10 @@ return [
         'selection_mode' => 'Modo de selección',
         'resize_image' => 'Redimensionar imagen',
         'image_size' => 'Tamaño de la imagen:',
-        'selected_size' => 'Selección:'
+        'selected_size' => 'Selección:',
+        'rename_popup_title' => 'Renombrar',
+        'rename_new_name' => 'Nuevo nombre',
+        'move_please_select' => 'por favor seleccionar',
+        'move_button' => 'Mover',
     ],
 ];

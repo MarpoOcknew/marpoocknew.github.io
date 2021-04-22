@@ -17,19 +17,25 @@ return [
     'mailgun' => [
         'domain' => '',
         'secret' => '',
+        'endpoint' => 'api.mailgun.net', // api.eu.mailgun.net for EU
     ],
 
     'mandrill' => [
         'secret' => '',
     ],
 
+    'postmark' => [
+        'token' => '',
+    ],
+
     'ses' => [
-        'region' => 'eu-west-1',
-        'version' => 'latest',
-        'credentials' => array(
-            'key' => env('SES_KEY'),
-            'secret' => env('SES_SECRET'),
-        )
+        'key' => '',
+        'secret' => '',
+        'region' => 'us-east-1',
+    ],
+
+    'sparkpost' => [
+        'secret' => '',
     ],
 
     'stripe' => [

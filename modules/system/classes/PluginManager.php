@@ -16,12 +16,12 @@ use RecursiveDirectoryIterator;
 /**
  * Plugin manager
  *
- * @package october\system
+ * @package winter\wn-system-module
  * @author Alexey Bobkov, Samuel Georges
  */
 class PluginManager
 {
-    use \October\Rain\Support\Traits\Singleton;
+    use \Winter\Storm\Support\Traits\Singleton;
 
     /**
      * The application instance, since Plugins are an extension of a Service Provider
@@ -238,18 +238,6 @@ class PluginManager
             ComposerManager::instance()->autoload($pluginPath . '/vendor');
         }
 
-        /**
-         * Disable plugin registration for restricted pages, unless elevated
-         */
-        if (self::$noInit && !$plugin->elevated) {
-            return;
-        }
-
-        /**
-         * Run the plugin's register() method
-         */
-        $plugin->register();
-
         /*
          * Register configuration path
          */
@@ -265,6 +253,18 @@ class PluginManager
         if (File::isDirectory($viewsPath)) {
             View::addNamespace($pluginNamespace, $viewsPath);
         }
+
+        /**
+         * Disable plugin registration for restricted pages, unless elevated
+         */
+        if (self::$noInit && !$plugin->elevated) {
+            return;
+        }
+
+        /**
+         * Run the plugin's register() method
+         */
+        $plugin->register();
 
         /*
          * Add init, if available
@@ -346,13 +346,22 @@ class PluginManager
 
     /**
      * Returns an array with all enabled plugins
-     * The index is the plugin namespace, the value is the plugin information object.
      *
-     * @return array
+     * @return array [$code => $pluginObj]
      */
     public function getPlugins()
     {
         return array_diff_key($this->plugins, $this->disabledPlugins);
+    }
+
+    /**
+     * Returns an array will all plugins detected on the filesystem
+     *
+     * @return array [$code => $pluginObj]
+     */
+    public function getAllPlugins()
+    {
+        return $this->plugins;
     }
 
     /**
@@ -505,7 +514,7 @@ class PluginManager
         $plugins = $this->getPlugins();
 
         foreach ($plugins as $id => $plugin) {
-            if (!method_exists($plugin, $methodName)) {
+            if (!is_callable([$plugin, $methodName])) {
                 continue;
             }
 

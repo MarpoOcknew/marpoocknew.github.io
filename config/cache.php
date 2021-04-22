@@ -11,9 +11,14 @@ return [
     | using this caching library. This connection is used when another is
     | not explicitly specified when executing a given caching function.
     |
+    | WARNING! Do not use anything that is used for other information in your
+    | application. Example: If you are using redis for managing queues and / or
+    | sessions, you should NOT be using the EXACT SAME redis connection for the
+    | Cache store, as calling Cache::flush() will flush the entire redis store.
+    |
     */
 
-    'default' => 'file',
+    'default' => env('CACHE_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,16 +34,16 @@ return [
     'stores' => [
 
         'apc' => [
-            'driver' => 'apc'
+            'driver' => 'apc',
         ],
 
         'array' => [
-            'driver' => 'array'
+            'driver' => 'array',
         ],
 
         'database' => [
-            'driver' => 'database',
-            'table'  => 'cache',
+            'driver'     => 'database',
+            'table'      => 'cache',
             'connection' => null,
         ],
 
@@ -59,7 +64,7 @@ return [
         ],
 
         'redis' => [
-            'driver' => 'redis',
+            'driver'     => 'redis',
             'connection' => 'default',
         ],
 
@@ -76,6 +81,41 @@ return [
     |
     */
 
-    'prefix' => 'october',
+    'prefix' => 'winter',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Key for the CMS' PHP code parser cache
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the cache key used by the CMS when storing generated
+    | PHP from the theme PHP sections. Recommended to change this when multiple
+    | servers running Winter CMS are connected to the same cache server to
+    | prevent conflicts.
+    |
+    */
+
+    'codeParserDataCacheKey' => 'cms-php-file-data',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Disable Request Cache
+    |--------------------------------------------------------------------------
+    |
+    | The request cache stores cache retrievals from the cache store
+    | in memory to speed up consecutive retrievals within the same request.
+    |
+    | true  - always disable this in-memory request cache
+    |
+    | false - always enable; be aware that long-running console commands
+    |         (including queue workers) may retain cache entries in memory that
+    |         have been changed in other processes or would have otherwise
+    |         expired, causing issues with the `queue:restart` command, for
+    |         example
+    |
+    | null  - enable for HTTP requests, disable when running in CLI
+    |
+    */
+
+    'disableRequestCache' => null,
 ];

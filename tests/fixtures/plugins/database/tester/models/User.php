@@ -17,6 +17,19 @@ class User extends Model
     /**
      * @var array Relations
      */
+    public $hasOne = [
+        'author' => [
+            'Database\Tester\Models\Author',
+        ]
+    ];
+
+    public $hasOneThrough = [
+        'phone' => [
+            'Database\Tester\Models\Phone',
+            'through' => 'Database\Tester\Models\Author',
+        ],
+    ];
+
     public $attachOne = [
         'avatar' => 'System\Models\File'
     ];
@@ -24,12 +37,11 @@ class User extends Model
     public $attachMany = [
         'photos' => 'System\Models\File'
     ];
-
 }
 
 class SoftDeleteUser extends User
 {
-    use \October\Rain\Database\Traits\SoftDelete;
+    use \Winter\Storm\Database\Traits\SoftDelete;
 }
 
 class UserWithAuthor extends User
@@ -48,10 +60,10 @@ class UserWithSoftAuthor extends User
 
 class UserWithAuthorAndSoftDelete extends UserWithAuthor
 {
-    use \October\Rain\Database\Traits\SoftDelete;
+    use \Winter\Storm\Database\Traits\SoftDelete;
 }
 
 class UserWithSoftAuthorAndSoftDelete extends UserWithSoftAuthor
 {
-    use \October\Rain\Database\Traits\SoftDelete;
+    use \Winter\Storm\Database\Traits\SoftDelete;
 }

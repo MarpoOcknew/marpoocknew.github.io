@@ -1,11 +1,15 @@
 <?php
 
+use Backend\Classes\AuthManager;
 use System\Classes\UpdateManager;
 use System\Classes\PluginManager;
-use October\Rain\Database\Model as ActiveRecord;
+use Winter\Storm\Database\Model as ActiveRecord;
+use Winter\Tests\Concerns\InteractsWithAuthentication;
 
-abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
+abstract class PluginTestCase extends TestCase
 {
+    use InteractsWithAuthentication;
+
     /**
      * @var array Cache for storing which plugins have been loaded
      * and refreshed.
@@ -24,15 +28,35 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
         $app['cache']->setDefaultDriver('array');
         $app->setLocale('en');
 
+        $app->singleton('backend.auth', function ($app) {
+            $app['auth.loaded'] = true;
+
+            return AuthManager::instance();
+        });
+
         /*
-         * Store database in memory
+         * Store database in memory by default, if not specified otherwise
          */
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
+        $dbConnection = 'sqlite';
+
+        $dbConnections = [];
+        $dbConnections['sqlite'] = [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => ''
-        ]);
+        ];
+
+        if (env('APP_ENV') === 'testing' && Config::get('database.useConfigForTesting', false)) {
+            $dbConnection = Config::get('database.default', 'sqlite');
+
+            $dbConnections[$dbConnection] = Config::get('database.connections' . $dbConnection, $dbConnections['sqlite']);
+        }
+
+        $app['config']->set('database.default', $dbConnection);
+        $app['config']->set('database.connections.' . $dbConnection, $dbConnections[$dbConnection]);
+
+        // Set random encryption key
+        $app['config']->set('app.key', bin2hex(random_bytes(16)));
 
         /*
          * Modify the plugin path away from the test context
@@ -46,14 +70,14 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
      * Perform test case set up.
      * @return void
      */
-    public function setUp()
+    public function setUp() : void
     {
         /*
-         * Force reload of October singletons
+         * Force reload of Winter singletons
          */
         PluginManager::forgetInstance();
         UpdateManager::forgetInstance();
-        
+
         /*
          * Create application instance
          */
@@ -62,7 +86,7 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
         /*
          * Ensure system is up to date
          */
-        $this->runOctoberUpCommand();
+        $this->runWinterUpCommand();
 
         /*
          * Detect plugin from test and autoload it
@@ -84,7 +108,7 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
      * Flush event listeners and collect garbage.
      * @return void
      */
-    public function tearDown()
+    public function tearDown() : void
     {
         $this->flushModelEventListeners();
         parent::tearDown();
@@ -92,12 +116,12 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * Migrate database using october:up command.
+     * Migrate database using winter:up command.
      * @return void
      */
-    protected function runOctoberUpCommand()
+    protected function runWinterUpCommand()
     {
-        Artisan::call('october:up');
+        Artisan::call('winter:up');
     }
 
     /**
@@ -109,7 +133,9 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
     protected function runPluginRefreshCommand($code, $throwException = true)
     {
         if (!preg_match('/^[\w+]*\.[\w+]*$/', $code)) {
-            if (!$throwException) return;
+            if (!$throwException) {
+                return;
+            }
             throw new Exception(sprintf('Invalid plugin code: "%s"', $code));
         }
 
@@ -124,7 +150,9 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
             $path = array_get($manager->getPluginNamespaces(), $namespace);
 
             if (!$path) {
-                if (!$throwException) return;
+                if (!$throwException) {
+                    return;
+                }
                 throw new Exception(sprintf('Unable to find plugin with code: "%s"', $code));
             }
 
@@ -138,8 +166,9 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
 
         if (!empty($plugin->require)) {
             foreach ((array) $plugin->require as $dependency) {
-
-                if (isset($this->pluginTestCaseLoadedPlugins[$dependency])) continue;
+                if (isset($this->pluginTestCaseLoadedPlugins[$dependency])) {
+                    continue;
+                }
 
                 $this->runPluginRefreshCommand($dependency);
             }
@@ -167,7 +196,7 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * The models in October use a static property to store their events, these
+     * The models in Winter use a static property to store their events, these
      * will need to be targeted and reset ready for a new test cycle.
      * Pivot models are an exception since they are internally managed.
      * @return void
@@ -175,15 +204,15 @@ abstract class PluginTestCase extends Illuminate\Foundation\Testing\TestCase
     protected function flushModelEventListeners()
     {
         foreach (get_declared_classes() as $class) {
-            if ($class == 'October\Rain\Database\Pivot') {
+            if ($class === 'Winter\Storm\Database\Pivot' || strtolower($class) === 'october\rain\database\pivot') {
                 continue;
             }
 
             $reflectClass = new ReflectionClass($class);
             if (
                 !$reflectClass->isInstantiable() ||
-                !$reflectClass->isSubclassOf('October\Rain\Database\Model') ||
-                $reflectClass->isSubclassOf('October\Rain\Database\Pivot')
+                !$reflectClass->isSubclassOf('Winter\Storm\Database\Model') ||
+                $reflectClass->isSubclassOf('Winter\Storm\Database\Pivot')
             ) {
                 continue;
             }

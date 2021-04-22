@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => 'mysql',
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,29 +48,31 @@ return [
 
         'sqlite' => [
             'driver'   => 'sqlite',
-            'database' => 'storage/database.sqlite',
+            'database' => env('DB_DATABASE', 'E:\\Code\\winter\\storage/database.sqlite'),
             'prefix'   => '',
         ],
 
         'mysql' => [
-            'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'port'      => 3306,
-            'database'  => env('DB_NAME'),
-            'username'  => env('DB_USERNAME'),
-            'password'  => env('DB_PASSWORD'),
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
+            'driver'     => 'mysql',
+            'engine'     => 'InnoDB',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', 3306),
+            'database' => env('DB_DATABASE', 'winter'),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
+            'charset'    => 'utf8mb4',
+            'collation'  => 'utf8mb4_unicode_ci',
+            'prefix'     => '',
+            'varcharmax' => 191,
         ],
 
         'pgsql' => [
             'driver'   => 'pgsql',
-            'host'     => 'localhost',
-            'port'     => 5432,
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', 5432),
+            'database' => env('DB_DATABASE', 'database'),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
@@ -78,11 +80,11 @@ return [
 
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
-            'host'     => 'localhost',
-            'port'     => 1433,
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', 5432),
+            'database' => env('DB_DATABASE', 'database'),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
             'prefix'   => '',
         ],
 
@@ -114,15 +116,33 @@ return [
 
     'redis' => [
 
+        'client' => 'predis',
         'cluster' => false,
 
         'default' => [
-            'host'     => '127.0.0.1',
-            'password' => null,
-            'port'     => 6379,
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
             'database' => 0,
         ],
 
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Use DB configuration for testing
+    |--------------------------------------------------------------------------
+    |
+    | When running plugin tests Winter CMS by default uses SQLite in memory.
+    | You can override this behavior by setting `useConfigForTesting` to true.
+    |
+    | After that Winter CMS will take DB parameters from the config.
+    | If file `/config/testing/database.php` exists, config will be read from it,
+    | but remember that when not specified it will use parameters specified in
+    | `/config/database.php`.
+    |
+    */
+
+    'useConfigForTesting' => env('DB_USE_CONFIG_FOR_TESTING', false),
 
 ];

@@ -1,18 +1,17 @@
 <?php namespace Database\Tester\Updates;
 
 use Schema;
-use October\Rain\Database\Updates\Migration;
+use Winter\Storm\Database\Updates\Migration;
 
 class CreateAuthorsTable extends Migration
 {
-
     public function up()
     {
-        Schema::create('database_tester_authors', function ($table)
-        {
+        Schema::create('database_tester_authors', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index()->nullable();
+            $table->integer('country_id')->unsigned()->index()->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->softDeletes();
@@ -24,5 +23,4 @@ class CreateAuthorsTable extends Migration
     {
         Schema::dropIfExists('database_tester_authors');
     }
-
 }
