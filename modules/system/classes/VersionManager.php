@@ -101,6 +101,28 @@ class VersionManager
     }
 
     /**
+     * Update the current replaced plugin's version to reference the replacing plugin.
+     */
+    public function replacePlugin(PluginBase $plugin, string $replace)
+    {
+        $currentVersion = $this->getDatabaseVersion($replace);
+        if ($currentVersion === self::NO_VERSION_VALUE) {
+            return;
+        }
+
+        // We only care about the database version of the replaced plugin at this point
+        if (!$plugin->canReplacePlugin($replace, $currentVersion)) {
+            return;
+        }
+
+        Db::table('system_plugin_versions')
+            ->where('code', '=', $replace)
+            ->update([
+                'code' => $plugin->getPluginIdentifier()
+            ]);
+    }
+
+    /**
      * Returns a list of unapplied plugin versions.
      */
     public function listNewVersions($plugin)
@@ -266,6 +288,7 @@ class VersionManager
 
         $versions = $this->getFileVersions($code);
         $position = array_search($version, array_keys($versions));
+
         return array_slice($versions, ++$position);
     }
 
