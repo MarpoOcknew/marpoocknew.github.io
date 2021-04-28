@@ -102,6 +102,15 @@ default = 1
     {variable name="company" label="Company" type="text" span="left"}{/variable}
     {variable name="year" label="Year" type="text" span="left"}{/variable}
 {/repeater}
+
+{variable name="section16" label="Portfolio" tab="Portfolio" type="section" span="full"}{/variable}
+{repeater name="portfolio" prompt="Add portfolio" tab="Portfolio" span="full"}
+    {variable name="name" label="Name" type="text" span="left"}{/variable}
+    {variable name="image" label="Image" type="mediafinder" mode="image" span="right"}{/variable}
+    {variable name="category" label="Category" type="dropdown" options="Web:Web|App:App|Software:Software|Backend:Backend|Other:Other" span="left"}{/variable}
+    {variable name="link" label="Link" type="text" span="left"}{/variable}
+    {variable name="description" label="Description" type="richeditor" size="large" span="left"}{/variable}
+{/repeater}
 {% endspaceless %}
 <!doctype html>
 <html lang="en">
