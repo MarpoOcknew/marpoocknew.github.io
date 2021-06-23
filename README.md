@@ -1,168 +1,58 @@
-![Viatic CMS](viatic-cms-logo.png)
+# Gridsome Portfolio Starter
 
-# Viatic CMS
+A simple portfolio starter theme for Gridsome
 
-A customised version of [OctoberCMS](https://octobercms.com) for creating sites for VIA Creative. Includes the base template setup and ready for development.
+![screenshot](https://user-images.githubusercontent.com/4316355/55691365-a2403380-596b-11e9-93be-05b846ec7760.jpg)
 
+## Demo URL
 
-## Getting Started
+[https://gridsome-portfolio-starter.netlify.com](https://gridsome-portfolio-starter.netlify.com)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Features
 
-### Prerequisites
+- Clean and minimal design
+- [Tailwind CSS v1](https://tailwindcss.com) (with PurgeCSS). Using [this gridsome plugin](https://gridsome.org/plugins/gridsome-plugin-tailwindcss).
+- Scroll to sections using [vue-scrollto](https://github.com/rigor789/vue-scrollto)
+- Blog with markdown content for posts
+- Documentation type that shows how to use Vue components in Markdown (click Docs)
+- Theme Switcher with Dark Mode
+- Search posts with [Fuse.js](https://fusejs.io) and [vue-fuse](https://github.com/shayneo/vue-fuse)
+- Tags for posts
+- Basic pagination
+- Syntax highlighting with [Shiki](https://shiki.matsu.io) (using [this gridsome plugin](https://gridsome.org/plugins/gridsome-plugin-remark-shiki))
+- 404 Page
+- RSS Feed
+- Sitemap in XML
 
-What things you need to install the software and how to install them
+## Installation
 
-- [Homebrew](https://brew.sh)
-- PHP 7.0+ - `brew install php`
-- [Composer](https://getcomposer.org/)
-- [Yarn](https://yarnpkg.com/lang/en/docs/install/)/[NPM](https://nodejs.org/en/download/) (Both recommended)
-- [Laravel Valet](https://laravel.com/docs/5.8/valet#installation) or another local dev environment with mysql databases
+1. Install Gridsome CLI tool if you don't have it: `npm install --global @gridsome/cli`
+1. Clone the repo: `git clone https://github.com/drehimself/gridsome-portfolio-starter.git`
+1. `cd gridsome-portfolio-starter`
+1. `npm install` (This can be a long download because of Cypress. If you don't care about testing with Cypress, remove it from `package.json`)
+1. `gridsome develop` to start a local dev server at `http://localhost:8080`
 
-### Installing
+## Testing
 
-Follow these steps to install and setup Viatic for a new project.
+I have some basic end-to-end tests using [Cypress](https://cypress.io). You can find them in `/cypress/integration/tests.js`.
 
+To run tests, first make sure your dev server is running with `gridsome develop`. I'm assuming you're using the default port of 8080. If not, change the `baseUrl` key in the `cypress.json` file.
 
-#### 1. Install ViaticCMS
+After your dev server is running, you can run `npm run test` or `./node_modules/.bin/cypress open` to start Cypress. The Cypress electron app will run. Click the `tests.js` file and the tests will run in an automated browser.
 
-Clone or copy this project into the location of your other sites and rename it to the new site and delete the current .git folder.
+## Notes
 
-Create a local database for this site and edit the .env file with the correct database name.
+ - When Gridsome moves to Vue 3, I'll update this repo as well. I'll also update to Tailwind v2, along with other Tailwind v2 goodies like dark mode and the JIT.
+ - Based on my [personal portfolio website](https://andremadarang.com). I wanted to create an open source version with more features.
+ - Check out a [screencast I did](https://www.youtube.com/watch?v=uHo6o1TNQeE) where I go through the process of building my website.
+ - Illustrations from [unDraw](https://undraw.co)
+ - Search is based on [Fuse.js](https://fusejs.io) and [vue-fuse](https://github.com/shayneo/vue-fuse). It only searches the title and summary of posts for now. Some tweaking may be necessary to get it to search to your liking. Check out the fuse documentation for search settings. [This PR](https://github.com/drehimself/gridsome-portfolio-starter/pull/104) added the ability to search both "Post" and "Documentation" types.
+ - Check out these other Gridsome Starters where I got some ideas from:
+    - [Gridsome Starter Blog](https://github.com/gridsome/gridsome-starter-blog)
+    - [Gridsome Starter Bleda](https://github.com/cossssmin/gridsome-starter-bleda)
+    - [Jigsaw Starter Blog](https://jigsaw.tighten.co/docs/starter-templates/) - I got a lot of design inspiration from this starter theme.
 
-Open Terminal and `cd` into the new website folder
+## Other versions
 
-```
-cd ~/Sites/new-site
-```
-
-Once in the site filder, run the following command to install all dependancies
-```
-composer install
-```
-
-
-#### 2. Setup Theme
-
-Enter the theme folder with this command
-```
-cd themes/via-base
-```
-
-Install any dependancies
-```
-yarn
-```
-
-
-#### 3. Setup Database
-
-Go back to the site root folder and install the database with this command:
-
-```
-php artisan october:up
-```
-
-This will install the tables for the CMS and all plugins that have been left for installation.
-
-It will also create a user that can be used to login with the username & password as `admin`.
-
-
-#### 4. Install Viatic Settings
-
-First move the `ViaticSetup.php` in the root folder to `Modules\Backend\Database\Seeds`.
-
-Install and setup all Viatic settings by running the db seeder with this command
-```
-php artisan db:seed --class="\Backend\Database\Seeds\ViaticSetup"
-```
-
-
-#### 5. Setup Dashboard
-
-On the admin dashboard, add any Widget and sae the layout as the default using the 'Manage Widgets' button.
-
-Open the database in Sequel Pro or PHPmyAdmin and select the `system_parameters` table.
-
-You should see `default.dashboard`, update its value with this JSON
-
-```json
-{"welcome":{"class":"Backend\\ReportWidgets\\Welcome","sortOrder":50,"configuration":{"title":"Welcome","ocWidgetWidth":"6","ocWidgetNewRow":null}},"activeTheme":{"class":"Cms\\ReportWidgets\\ActiveTheme","sortOrder":70,"configuration":{"title":"Website","ocWidgetWidth":"3","ocWidgetNewRow":null}},"report_container_dashboard_3":{"class":"JanVince\\SmallContactForm\\ReportWidgets\\NewMessage","configuration":{"ocWidgetWidth":"3","ocWidgetNewRow":null},"sortOrder":71},"report_container_dashboard_4":{"class":"JanVince\\SmallContactForm\\ReportWidgets\\Messages","configuration":{"ocWidgetWidth":"3"},"sortOrder":72},"report_container_dashboard_6":{"class":"RainLab\\GoogleAnalytics\\ReportWidgets\\TrafficSources","configuration":{"title":"Traffic Sources","reportSize":"150","legendAsTable":1,"days":"30","number":"10","displayDescription":0,"ocWidgetWidth":"3","ocWidgetNewRow":null,"center":null},"sortOrder":74},"report_container_dashboard_7":{"class":"RainLab\\GoogleAnalytics\\ReportWidgets\\Browsers","configuration":{"title":"Browsers","reportHeight":"200","legendAsTable":1,"days":"7","displayDescription":0,"ocWidgetWidth":"3","ocWidgetNewRow":null},"sortOrder":75},"report_container_dashboard_8":{"class":"RainLab\\GoogleAnalytics\\ReportWidgets\\TrafficOverview","configuration":{"title":"Traffic overview","days":"30","ocWidgetWidth":"6"},"sortOrder":76}}
-```
-
-This will setup the dashboard with all of the analytics data. You will need to reset the dashboard layout before you see the new default. Analytics will need setup in the Settings tab before they will show properly.
-
-
-#### 6. Create gitignore
-
-In the root folder, duplicate and rename the `.gitignore copy` file to `.gitignore`.
-
-In the via-base theme folder, duplicate and rename the `.gitignore copy` file to `.gitignore`.
-
-
-## Editing the theme
-
-The base theme uses Bootstrap 4 and some custom helper classes and is compiled with gulp.
-
-To make changes `cd` into the theme folder
-
-```
-cd /themes/via-base
-```
-
-And watch for changes with
-```
-gulp watch
-```
-
-
-## Deployment
-
-Forge should be used for deploying all updates.
-
-Can be manually deployed by connecting to the server using SSH. Make sure you have ran `gulp` to update theme files and have pushed the updates, then just connect to the server, `cd` into the website's folder and run `git pull` assuming there are no conflicts.
-
-
-## Authors
-
-* **Martin Pollock** - *Initial Viatic and Theme creation* - [MarpoOcknew](https://github.com/MarpoOcknew)
-
-
-## Version History
-
-### Initial Page Builder Release 2.0
-
-```
-- Added theme support for [Viatic Blocks](https://github.com/viacreativedev/Viatic-Blocks)
-    - Update default layout to use only blocks
-    - Add default seo and meta tag fields to layout
-    - Updated variables and mixins to allow for 4 colours + gray with 2 shades darker and lighter for each
-```
-
-### Theme Settings Release 1.3
-
-```
-- Added some default settings to the theme.yaml
-    - Add general details
-    - Add contact details
-    - Add social links
-```
-
-### Quick Install Release 1.2
-
-```
-- Moved a lot of the manual setup to a seeder to make installation much quicker
-```
-
-### Github Release 1.1
-
-```
-- Cleaned up and added to github repo
-```
-
-### Initial Release 1.0
-
-```
-- Created the original version of this project
-- Added updated version of the old via october base theme with scss support
-```
+- Nuxt version: [https://github.com/drehimself/nuxt-portfolio-starter](https://github.com/drehimself/nuxt-portfolio-starter)
+- Saber version: [https://github.com/drehimself/saber-portfolio-starter](https://github.com/drehimself/saber-portfolio-starter)
