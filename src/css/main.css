@@ -4,6 +4,8 @@
 
 @tailwind utilities;
 
+@tailwind colors;
+
 .theme-light {
   --bg-background-primary: white;
   --bg-background-secondary: #f7fafc;
@@ -68,11 +70,11 @@
 }
 
 a {
-  @apply text-green-700 font-bold;
+  @apply text-blue-700 font-bold;
 }
 
 a:hover {
-  @apply text-green-800;
+  @apply text-blue-800;
 }
 
 nav .active {
