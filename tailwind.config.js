@@ -10,7 +10,7 @@ module.exports = {
       './src/**/*.pug',
       './src/**/*.md',
       './docs/**/*.md',
-      './blog/**/*.md',
+      './portfolio/**/*.md',
     ],
     options: {
       whitelist: [

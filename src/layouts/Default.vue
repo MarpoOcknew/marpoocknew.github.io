@@ -43,7 +43,7 @@
                         <g-link to="/docs" class="text-copy-primary hover:text-gray-600" data-cypress="docs">Docs</g-link>
                     </li>
                     <li>
-                        <g-link to="/blog" class="text-copy-primary hover:text-gray-600" data-cypress="blog">Blog</g-link>
+                        <g-link to="/portfolio" class="text-copy-primary hover:text-gray-600" data-cypress="portfolio">Portfolio</g-link>
                     </li>
                 </ul>
             </nav>

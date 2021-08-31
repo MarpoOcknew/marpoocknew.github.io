@@ -5,7 +5,7 @@
                 <portfolio-card v-for="post in $page.posts.edges" :key="post.id" :post="post" />
             </div>
 
-            <pagination-posts v-if="$page.posts.pageInfo.totalPages > 1" base="/blog" :totalPages="$page.posts.pageInfo.totalPages" :currentPage="$page.posts.pageInfo.currentPage" />
+            <pagination-posts v-if="$page.posts.pageInfo.totalPages > 1" base="/portfolio" :totalPages="$page.posts.pageInfo.totalPages" :currentPage="$page.posts.pageInfo.currentPage" />
         </div>
     </Layout>
 </template>
@@ -43,7 +43,7 @@ import PortfolioCard from '../components/PortfolioCard'
 
 export default {
     metaInfo: {
-        title: 'Blog'
+        title: 'Portfolio'
     },
     components: {
         PaginationPosts,

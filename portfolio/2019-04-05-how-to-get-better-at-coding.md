@@ -53,7 +53,7 @@ export default {
   },
   data() {
     return {
-      base: '/blog'
+      base: '/portfolio'
     }
   }
 }
