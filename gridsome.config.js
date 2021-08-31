@@ -52,7 +52,9 @@ module.exports = {
           description: node.summary,
           url: 'https://gridsome-portfolio-starter.netlify.com' + node.path,
           author: 'Andre Madarang',
-          date: node.date
+          tags: node.tags,
+          date: node.date,
+          image: node.image
         }),
         output: {
           dir: './static',

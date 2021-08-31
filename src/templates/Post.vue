@@ -30,6 +30,7 @@ query Post ($path: String!) {
             title
             path
         }
+        image
     }
 }
 </page-query>
