@@ -1,9 +1,9 @@
 <template>
     <Layout>
-        <div class="container mx-auto py-20 w-full">
+        <div class="container mx-auto py-4 sm:py-20 w-full">
             <h2 class="text-4xl font-bold mb-8">Portfolio Items Tagged: #{{ $page.tag.title }}</h2>
 
-            <div class="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
+            <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
                 <portfolio-card v-for="post in $page.tag.belongsTo.edges" :key="post.id" :post="post" />
             </div>
 
