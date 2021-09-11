@@ -8,7 +8,6 @@ module.exports = {
   siteName: 'Martin Pollock - Web Developer Portfolio',
   siteDescription: 'Martin Pollock`s Web Developer Portfolio',
   siteUrl: 'https://marpoocknew.github.io',
-  pathPrefix: '/',
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',
@@ -26,30 +25,6 @@ module.exports = {
         }
       }
     },
-    // {
-    //   use: 'gridsome-plugin-rss',
-    //   options: {
-    //     contentTypeName: 'Post',
-    //     feedOptions: {
-    //       title: 'Gridsome Portfolio Starter Blog',
-    //       feed_url: 'https://gridsome-portfolio-starter.netlify.com/rss.xml',
-    //       site_url: 'https://gridsome-portfolio-starter.netlify.com/'
-    //     },
-    //     feedItemOptions: node => ({
-    //       title: node.title,
-    //       description: node.summary,
-    //       url: 'https://gridsome-portfolio-starter.netlify.com' + node.path,
-    //       author: 'Andre Madarang',
-    //       tags: node.tags,
-    //       date: node.date,
-    //       image: node.image
-    //     }),
-    //     output: {
-    //       dir: './static',
-    //       name: 'rss.xml'
-    //     }
-    //   }
-    // },
     {
       use: '@gridsome/plugin-sitemap',
       options: {
