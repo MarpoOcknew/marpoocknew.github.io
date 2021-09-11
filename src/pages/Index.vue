@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <div class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between py-16 mt-8">
+        <div class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between items-center py-16 mt-8">
             <div class="text-4xl font-bold w-full sm:w-3/5 text-center sm:text-left mr-16">
                 <div class="leading-tight">Martin Pollock</div>
                 <div class="text-blue-700 leading-tight">Full Stack Web Developer</div>
@@ -12,21 +12,26 @@
         </div> <!-- end hero -->
 
         <div class="container-inner mx-auto">
-            <p class="text-lg sm:text-xl">Motivated web developer with 10 years of progressive experience in the web development industry. Offering expertise in HTML, CSS and PHP, with aptitude in JavaScript. Energetic self-starter and team builder able to navigate high-stress situations and achieve goals on time and under budget.</p>
+            <p class="text-lg sm:text-xl">Web developer with over 10 years of experience building website using HTML, CSS and PHP. Experience with building mobile apps using React Native and Nativescript/VueJS, setting up and managing servers, and working directly with designers, clients and external contractors.</p>
+
+            <div class="flex items-center md:justify-center my-8">
+                <p class="text-lg sm:text-xl">Download and view my full CV</p>
+                <g-link to="../../static/cv.pdf" download="CV - Martin Pollock" class="block bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold tracking-wide uppercase shadow rounded cursor-pointer px-6 py-3 ml-auto">Download CV</g-link>
+            </div>
 
             <div class="flex justify-between items-center py-6">
                 <div class="w-full sm:w-1/2 px-8 py-8 sm:py-0">
-                    <g-image src="../../static/mind_map.svg" alt="browser" />
+                    <g-image src="../../static/browser.svg" alt="browser" />
                 </div>
 
                 <div class="w-1/2 px-8 hidden sm:flex justify-end">
-                    <g-image src="../../static/code_review.svg" alt="mobile" />
+                    <g-image src="../../static/mobile.svg" alt="mobile" />
                 </div>
             </div>
         </div>
 
         <div class="overflow-x-hidden">
-            <div id="projects" style="position: relative; top: -40px; left: 0" />
+            <div id="skills" style="position: relative; top: -40px; left: 0" />
 
             <div class="projects container-inner mx-auto text-xl border-t border-gray-500 border-b py-16 mb-16 relative">
                 <h2 class="font-bold mb-6">Skills & Languages:</h2>

@@ -9,7 +9,6 @@ module.exports = {
       './src/**/*.html',
       './src/**/*.pug',
       './src/**/*.md',
-      './docs/**/*.md',
       './portfolio/**/*.md',
     ],
     options: {

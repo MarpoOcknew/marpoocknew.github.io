@@ -1,28 +1,12 @@
 <template>
     <Layout>
-        <div class="container-inner mx-auto my-20">
-            <h2 class="text-4xl font-bold mb-8 border-b">Tag: {{ $page.tag.title }}</h2>
+        <div class="container mx-auto py-20 w-full">
+            <h2 class="text-4xl font-bold mb-8">Portfolio Items Tagged: #{{ $page.tag.title }}</h2>
 
-            <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="post border-gray-400 border-b mb-12">
-                <h2 class="text-3xl font-bold">
-                    <g-link :to="post.node.path" class="text-copy-primary">{{ post.node.title }}</g-link>
-                </h2>
-
-                <div class="text-copy-secondary mb-4">
-                    <span>{{ post.node.date }}</span>
-                    <span> &middot; </span>
-                    <span>{{ post.node.timeToRead }} min read</span>
-                </div>
-
-                <div class="text-lg mb-4">
-                    {{ post.node.summary }}
-                </div>
-
-                <div class="mb-8">
-                    <g-link :to="post.node.path" class="font-bold uppercase">Read More</g-link>
-                </div>
+            <div class="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
+                <portfolio-card v-for="post in $page.tag.belongsTo.edges" :key="post.id" :post="post" />
             </div>
-            
+
             <pagination-posts v-if="$page.tag.belongsTo.pageInfo.totalPages > 1" :base="`/tag/${$page.tag.title}`" :totalPages="$page.tag.belongsTo.pageInfo.totalPages" :currentPage="$page.tag.belongsTo.pageInfo.currentPage" />
         </div>
     </Layout>
@@ -32,7 +16,7 @@
 query Tag ($id: ID!, $page: Int) {
     tag: tag (id: $id) {
         title
-        belongsTo (page: $page, perPage: 3) @paginate {
+        belongsTo (page: $page, perPage: 8) @paginate {
             totalCount
             pageInfo {
                 totalPages
@@ -41,14 +25,16 @@ query Tag ($id: ID!, $page: Int) {
             edges {
                 node {
                     ...on Post {
+                        id
                         title
-                        timeToRead
-                        date (format: "MMMM D, YYYY")
-                        path
+                        order
                         summary
+                        path
                         tags {
                             title
+                            path
                         }
+                        image
                     }
                 }
             }
@@ -59,15 +45,17 @@ query Tag ($id: ID!, $page: Int) {
 
 <script>
 import PaginationPosts from '../components/PaginationPosts'
+import PortfolioCard from '../components/PortfolioCard'
 
 export default {
     metaInfo() {
         return {
-            title: 'Tag: ' + this.$page.tag.title
+            title: 'Portfolio Items Tagged: ' + this.$page.tag.title
         }
     },
     components: {
-        PaginationPosts
+        PaginationPosts,
+        PortfolioCard
     }
 };
 </script>

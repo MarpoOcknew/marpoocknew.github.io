@@ -25,8 +25,8 @@
                         <theme-switcher :theme="theme" @themeChanged="updateTheme" />
                     </li>
                     <li>
-                        <a v-if="$route.path === '/'" href="/#projects" v-scroll-to="{ el: '#projects', offset: -25 }" class="text-copy-primary hover:text-gray-600" data-cypress="projects">Projects</a>
-                        <g-link v-else to="/#projects" class="text-copy-primary hover:text-gray-600">Projects</g-link>
+                        <a v-if="$route.path === '/'" href="/#skills" v-scroll-to="{ el: '#skills', offset: -25 }" class="text-copy-primary hover:text-gray-600" data-cypress="projects">Skills</a>
+                        <g-link v-else to="/#skills" class="text-copy-primary hover:text-gray-600">Skills</g-link>
                     </li>
                     <li>
                         <a v-if="$route.path === '/'" href="/#about" v-scroll-to="{ el: '#about', offset: -90 }" class="text-copy-primary hover:text-gray-600" data-cypress="about">About</a>

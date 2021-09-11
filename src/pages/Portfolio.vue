@@ -12,7 +12,7 @@
 
 <page-query>
 query Posts ($page: Int) {
-    posts: allPost (sortBy: "date", order: DESC, perPage: 8, page: $page) @paginate {
+    posts: allPost (sortBy: "order", order: DESC, perPage: 8, page: $page) @paginate {
         totalCount
         pageInfo {
             totalPages
@@ -22,9 +22,8 @@ query Posts ($page: Int) {
             node {
                 id
                 title
-                date (format: "MMMM D, Y")
+                order
                 summary
-                timeToRead
                 path
                 tags {
                     title

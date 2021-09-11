@@ -5,25 +5,13 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome Portfolio Starter',
-  siteDescription: 'A simple portfolio theme for Gridsome powered by Tailwind CSS v1',
+  siteName: 'Martin Pollock - Web Developer Portfolio',
+  siteDescription: 'Martin Pollock`s Web Developer Portfolio',
   siteUrl: 'https://marpoocknew.github.io',
-  pathPrefix: '/portfolio',
+  pathPrefix: '/',
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',
-    },
-    {
-      use: '@gridsome/vue-remark',
-      options: {
-        typeName: 'Documentation', // Required
-        baseDir: './docs', // Where .md files are located
-        pathPrefix: '/docs', // Add route prefix. Optional
-        template: './src/templates/Documentation.vue', // Optional
-        plugins: [
-          [ 'gridsome-plugin-remark-shiki', { theme: 'Material-Theme-Palenight', skipInline: true } ]
-      ],
-      }
     },
     {
       use: '@gridsome/source-filesystem',
@@ -38,30 +26,30 @@ module.exports = {
         }
       }
     },
-    {
-      use: 'gridsome-plugin-rss',
-      options: {
-        contentTypeName: 'Post',
-        feedOptions: {
-          title: 'Gridsome Portfolio Starter Blog',
-          feed_url: 'https://gridsome-portfolio-starter.netlify.com/rss.xml',
-          site_url: 'https://gridsome-portfolio-starter.netlify.com/'
-        },
-        feedItemOptions: node => ({
-          title: node.title,
-          description: node.summary,
-          url: 'https://gridsome-portfolio-starter.netlify.com' + node.path,
-          author: 'Andre Madarang',
-          tags: node.tags,
-          date: node.date,
-          image: node.image
-        }),
-        output: {
-          dir: './static',
-          name: 'rss.xml'
-        }
-      }
-    },
+    // {
+    //   use: 'gridsome-plugin-rss',
+    //   options: {
+    //     contentTypeName: 'Post',
+    //     feedOptions: {
+    //       title: 'Gridsome Portfolio Starter Blog',
+    //       feed_url: 'https://gridsome-portfolio-starter.netlify.com/rss.xml',
+    //       site_url: 'https://gridsome-portfolio-starter.netlify.com/'
+    //     },
+    //     feedItemOptions: node => ({
+    //       title: node.title,
+    //       description: node.summary,
+    //       url: 'https://gridsome-portfolio-starter.netlify.com' + node.path,
+    //       author: 'Andre Madarang',
+    //       tags: node.tags,
+    //       date: node.date,
+    //       image: node.image
+    //     }),
+    //     output: {
+    //       dir: './static',
+    //       name: 'rss.xml'
+    //     }
+    //   }
+    // },
     {
       use: '@gridsome/plugin-sitemap',
       options: {
