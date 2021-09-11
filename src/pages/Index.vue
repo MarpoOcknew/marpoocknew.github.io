@@ -1,9 +1,9 @@
 <template>
     <Layout>
         <div class="hero container-inner mx-auto flex flex-col sm:flex-row justify-between py-16 mt-8">
-            <div class="text-4xl font-bold w-full sm:w-3/5 text-center sm:text-left">
-                <div class="leading-tight">Gridsome Portfolio Starter</div>
-                <div class="text-blue-700 leading-tight">Powered by Vue.js &amp; Tailwind v1</div>
+            <div class="text-4xl font-bold w-full sm:w-3/5 text-center sm:text-left mr-16">
+                <div class="leading-tight">Martin Pollock</div>
+                <div class="text-blue-700 leading-tight">Full Stack Web Developer</div>
             </div>
             
             <div class="mt-8 sm:mt-0">
@@ -12,7 +12,7 @@
         </div> <!-- end hero -->
 
         <div class="container-inner mx-auto">
-            <p class="text-lg sm:text-xl">This gridsome theme was forked from my <a href="https://andremadarang.com">personal website</a>. I added more features and decided to release it as an open source project. Check it out on <a href="https://github.com/drehimself/gridsome-portfolio-starter">GitHub</a> or check out the <a href="https://www.youtube.com/watch?v=uHo6o1TNQeE">screencast I did</a>. Feel free to use it for your own site or projects! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima, repellat. Dolores iure, quas perspiciatis rerum quaerat atque eum repellat autem.</p>
+            <p class="text-lg sm:text-xl">Motivated web developer with 10 years of progressive experience in the web development industry. Offering expertise in HTML, CSS and PHP, with aptitude in JavaScript. Energetic self-starter and team builder able to navigate high-stress situations and achieve goals on time and under budget.</p>
 
             <div class="flex justify-between items-center py-6">
                 <div class="w-full sm:w-1/2 px-8 py-8 sm:py-0">
@@ -29,7 +29,7 @@
             <div id="projects" style="position: relative; top: -40px; left: 0" />
 
             <div class="projects container-inner mx-auto text-xl border-t border-gray-500 border-b py-16 mb-16 relative">
-                <h2 class="font-bold mb-6">Here are some projects I've worked on:</h2>
+                <h2 class="font-bold mb-6">Skills & Languages:</h2>
 
                 <div class="absolute right-0" style="top: 50px; transform: translate(100%) rotate(180deg)">
                     <svg width="170px" height="170px">
@@ -38,20 +38,16 @@
 
                 <ul class="text-lg sm:text-xl space-y-6">
                     <li class="checkmark">
-                        <div>Project One</div>
-                        <div class="text-lg text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ab nam animi iure nemo exercitationem a, eius non culpa itaque!</div>
+                        <div>Frontend</div>
+                        <div class="text-lg text-gray-600">HTML5, (S)CSS, JavaScript, Bootstrap, React Native, VueJS, Nativescript</div>
                     </li>
                     <li class="checkmark">
-                        <div>Project Two</div>
-                        <div class="text-lg text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ab nam animi iure nemo exercitationem a, eius non culpa itaque!</div>
+                        <div>Backend</div>
+                        <div class="text-lg text-gray-600">PHP, Laravel, Wordpress/Woocommerce, OctoberCMS/WinterCMS</div>
                     </li>
                     <li class="checkmark">
-                        <div>Project Three</div>
-                        <div class="text-lg text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ab nam animi iure nemo exercitationem a, eius non culpa itaque!</div>
-                    </li>
-                    <li class="checkmark">
-                        <div>Project Four</div>
-                        <div class="text-lg text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ab nam animi iure nemo exercitationem a, eius non culpa itaque!</div>
+                        <div>Tools</div>
+                        <div class="text-lg text-gray-600">Git, Gulp, Ubuntu Server Management, DNS Management</div>
                     </li>
                 </ul>
             </div> <!-- end projects -->
@@ -70,14 +66,10 @@
 
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-16">
                     <div>
-                        <g-image src="../../static/avatar.jpg" alt="avatar" class="w-32 h-32 rounded-full mb-8 lg:mb-0" />
+                        <g-image src="../../static/avatar.png" alt="avatar" class="w-32 h-32 rounded-full mb-8 lg:mb-0" />
                     </div>
 
-                    <div class="flex-1 text-lg sm:text-xl ml-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum quae architecto minus molestias iusto ducimus fuga quo quia libero dignissimos, fugiat modi assumenda debitis laboriosam.</div>
-                </div>
-
-                <div class="responsive-container">
-                    <iframe class="responsive-iframe w-full h-full top-0 left-0 border-0" src="https://www.youtube.com/embed/uHo6o1TNQeE" style="border:0;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="flex-1 text-lg sm:text-xl ml-6">When not messing with code, I spend time gaming, watching anime, building models and playing tabletop games. I'm a big fan of panel shows so I tend to be constantly watching QI, Would I Lie To You & 8 Out of Ten Cats.</div>
                 </div>
             </div> <!-- end get-to-know me -->
         </div>
@@ -94,8 +86,6 @@
                             <use xlink:href="#dots-triangle" /></svg>
                     </div>
 
-                    <p class="mb-12">Static sites cannot submit forms on their own. However, services like <a href="https://www.netlify.com/docs/form-handling">Netlify Forms</a> or <a href="https://formspree.io">FormSpree</a> can help you do this without a backend.</p>
-
                     <div class="text-lg sm:text-lg mb-16">
                         <form action="https://formspree.io/f/mwkaavdg" method="POST" class="mb-12">
                             <div class="flex flex-wrap mb-6 -mx-4">
@@ -103,7 +93,7 @@
                                     <label class="block mb-2 text-copy-primary" for="name">
                                         Name
                                     </label>
-                                    <input type="text" name="name" id="name" placeholder="Jon Snow" class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-blue-700 mb-2 p-4" required>
+                                    <input type="text" name="name" id="name" placeholder="Jimmy John" class="block w-full bg-background-form border border-border-color-primary shadow rounded outline-none focus:border-blue-700 mb-2 p-4" required>
                                 </div>
 
                                 <div class="w-full px-4 md:w-1/2">

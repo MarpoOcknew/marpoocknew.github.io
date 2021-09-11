@@ -1,7 +1,7 @@
 <template>
     <Layout>
-        <div class="container-inner mx-auto py-20 w-full">
-            <div class="flex flex-wrap justify-evenly">
+        <div class="container mx-auto py-20 w-full">
+            <div class="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
                 <portfolio-card v-for="post in $page.posts.edges" :key="post.id" :post="post" />
             </div>
 
@@ -12,7 +12,7 @@
 
 <page-query>
 query Posts ($page: Int) {
-    posts: allPost (sortBy: "date", order: DESC, perPage: 6, page: $page) @paginate {
+    posts: allPost (sortBy: "date", order: DESC, perPage: 8, page: $page) @paginate {
         totalCount
         pageInfo {
             totalPages

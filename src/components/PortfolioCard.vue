@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-blue-800 overflow-hidden shadow-lg rounded-lg h-auto w-80 md:w-80 mb-12 cursor-pointer transition duration-500 ease-in-out transform hover:scale-105 hover:translate-y-5 hover:shadow-2xl">
+    <div class="bg-blue-800 overflow-hidden shadow-lg rounded-lg h-auto cursor-pointer transition duration-500 ease-in-out transform hover:scale-105 hover:translate-y-5 hover:shadow-2xl">
         <g-link :to="post.node.path" class="flex flex-col w-full h-full">
             <g-image alt="blog photo" :src="post.node.image" class="max-h-60 w-full object-cover"/>
             <div class="flex flex-col w-full h-full p-4">
