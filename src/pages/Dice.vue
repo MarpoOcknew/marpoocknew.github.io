@@ -2,17 +2,17 @@
     <Layout>
         <div class="container mx-auto py-4 sm:py-20 w-full">
             <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
-                <portfolio-card v-for="post in $page.posts.edges" :key="post.id" :post="post" />
+                <dice-card v-for="dice in $page.dices.edges" :key="dice.id" :dice="dice" />
             </div>
 
-            <pagination-posts v-if="$page.posts.pageInfo.totalPages > 1" base="/portfolio" :totalPages="$page.posts.pageInfo.totalPages" :currentPage="$page.posts.pageInfo.currentPage" />
+            <pagination-posts v-if="$page.dices.pageInfo.totalPages > 1" base="/dice" :totalPages="$page.dices.pageInfo.totalPages" :currentPage="$page.dices.pageInfo.currentPage" />
         </div>
     </Layout>
 </template>
 
 <page-query>
-query Posts ($page: Int) {
-    posts: allPost (sortBy: "order", order: DESC, perPage: 12, page: $page) @paginate {
+query Dices ($page: Int) {
+    dices: allDice (sortBy: "order", order: DESC, perPage: 20, page: $page) @paginate {
         totalCount
         pageInfo {
             totalPages
@@ -25,7 +25,7 @@ query Posts ($page: Int) {
                 order
                 summary
                 path
-                tags {
+                types {
                     title
                     path
                 }
@@ -38,15 +38,15 @@ query Posts ($page: Int) {
 
 <script>
 import PaginationPosts from '../components/PaginationPosts'
-import PortfolioCard from '../components/PortfolioCard'
+import DiceCard from '../components/DiceCard'
 
 export default {
     metaInfo: {
-        title: 'Portfolio'
+        title: 'Dice'
     },
     components: {
         PaginationPosts,
-        PortfolioCard
+        DiceCard
     }
 };
 </script>

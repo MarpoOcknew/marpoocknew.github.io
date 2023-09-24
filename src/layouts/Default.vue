@@ -5,7 +5,7 @@
                 <div>
                     <g-link to="/" @click.native="scrollToTop" class="logo flex items-center">
                         <g-image src="../../static/logo.png" class="w-20" alt="logo" />
-                        <span class="ml-8 text-2xl text-white">Martin Pollock</span>
+                        <span class="ml-8 text-2xl">Martin Pollock</span>
                     </g-link>
                 </div>
 

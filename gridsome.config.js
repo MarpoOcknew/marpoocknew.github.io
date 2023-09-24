@@ -7,7 +7,7 @@
 module.exports = {
   siteName: 'Martin Pollock - Web Developer Portfolio',
   siteDescription: 'Martin Pollock`s Web Developer Portfolio',
-  siteUrl: 'https://marpoocknew.github.io',
+  siteUrl: 'https://martinpollock.uk',
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',
@@ -26,6 +26,19 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'dice/**/*.md',
+        typeName: 'Dice',
+        refs: {
+          types: {
+            typeName: 'Type',
+            create: true
+          }
+        }
+      }
+    },
+    {
       use: '@gridsome/plugin-sitemap',
       options: {
         cacheTime: 600000, // default
@@ -33,7 +46,8 @@ module.exports = {
     },
   ],
   templates: {
-    Tag: '/tag/:id'
+    Tag: '/tag/:id',
+    Type: '/type/:id'
   },
   transformers: {
     remark: {
